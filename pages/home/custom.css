@@ -1,0 +1,17 @@
+.value-img {
+    display: block;
+    text-align: center;
+    margin: 0em auto 1em;
+}
+
+.centered {
+    text-align: center;
+}
+
+.section {
+    margin: 5em auto 5em;
+}
+
+.agenda-item {
+    margin: 2.5em auto 2.5em;
+}

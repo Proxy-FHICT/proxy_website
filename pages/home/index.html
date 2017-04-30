@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tut</title>
+
+    <!-- some dependencies and frameworks... -->
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+
+    <!-- Milligram CSS -->
+    <!--<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+    <link rel="stylesheet" href="node_modules/milligram/dist/milligram.min.css">
+    <link rel="stylesheet" href="https://milligram.github.io/styles/main.css">-->
+
+    <!-- Skeleton CSS -->
+    <link rel="stylesheet" href="../../globals/skeleton-css/normalize.css">
+    <link rel="stylesheet" href="../../globals/skeleton-css/skeleton.css">
+
+
+    <!-- Custom css -->
+    <!-- TO BO CHANGED! -->
+    <link rel="stylesheet" href="custom.css">
+
+</head>
+
+<body>
+    <div id="homepage">
+
+        <!-- should be split after into resuable blocks -->
+
+
+
+        <!-- NAVBAR -->
+        <!-- issue 1 -->
+        <!-- END OF NAVBAR -->
+
+        <!-- WELCOME -->
+        <!-- issue 2 -->
+        <!-- END OF WELCOME -->
+
+        <!-- QUOTE -->
+        <!-- issue 3, assigned: Dmitrii -->
+        <div id="homequote" class="container section">
+            <div class="row">
+                <div class="c12 columns">
+                    <!-- not sure abou the code styling to be used here in the end -->
+                    <!--<pre><code>
+            We are proxy, the student association for the ICT English stream
+            Our job is to connect students to each other and companies    
+            </code></pre>-->
+                    <h4 class="centered">
+                        We are proxy, the student association for the ICT English stream <br/> Our job is to connect students to each other and companies
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <!-- END OF QUOTE -->
+
+        <!-- SERVICES -->
+        <!-- issue 4, assigned: Dmitrii -->
+        <div id="services" class="container section">
+            <div class="row">
+                <div class="c4 columns centered">
+                    <!-- pictures need to be changed -->
+                    <img src="basic_star.png" class="value-img" /> Entertainment
+                </div>
+                <div class="c4 columns centered">
+                    <img src="basic_star.png" class="value-img" /> Connection
+                </div>
+                <div class="c4 columns centered">
+                    <img src="basic_star.png" class="value-img" /> Support
+                </div>
+            </div>
+        </div>
+        <!-- END OF SERVICES -->
+
+        <!-- AGENDA -->
+        <!-- issue 5, assigned: Dmitrii -->
+        <div id="agenda" class="container section">
+            <div class="row">
+                <h1 class="centered">
+                    Agenda
+                </h1>
+                <div class="agenda-item" v-for="ev in events">
+                    <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
+                    <h6>{{geteventtime(ev)}}</h6>
+                    <!--name-->
+                    <h5>{{ev.name}}</h5>
+                    <!--description-->
+                    <p>{{ev.description.substring(0,70)}}...
+                        <br/>
+                        <!-- the link is made of: https://www.facebook.com/events/ + page id from API -->
+                        <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">View more...</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- END OF AGENDA -->
+
+        <!-- CONTACTS -->
+        <!-- issue 6 -->
+        <!-- END OF CONTACTS -->
+    </div>
+</body>
+
+
+<!-- VueJS -->
+<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+<!-- Axios -->
+<!-- NB: htpp library for javascript -->
+<!-- asyncronous get/put etc requests -->
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#homepage',
+        data: {
+            events: [],
+        },
+        created() {
+            this.getevents();
+        },
+        methods: {
+            // before you want to run the function to call the api, you want to debounce
+            // debounce is a basic function in lodash, that waits for certain amount of time to pass before the method is run
+            getevents: function() {
+                // because of inheritance we need to get the reference to the app
+                var app = this;
+                axios.get('https://proxy-ict-api.herokuapp.com/events/5') // grab data from this link
+                    .then(function(response) {
+                        console.dir(response);
+
+                        app.events = response.data;
+                    })
+                    .catch(function(error) { // error occured case
+                        app.events = [];
+                    })
+            },
+            geteventtime: function(event) {
+                ds = new Date(event.start_time);
+                de = new Date(event.end_time);
+
+                function addZero(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                };
+
+
+                datestring = ds.getFullYear() + '-' + ds.getMonth() + '-' + ds.getDate() + ': ' +
+                    addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
+                    addZero(de.getHours()) + ':' + addZero(de.getMinutes());
+
+                return datestring;
+            }
+        }
+    })
+</script>
+
+
+</html>
