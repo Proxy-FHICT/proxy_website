@@ -89,17 +89,31 @@
                 <h1 class="centered">
                     Agenda
                 </h1>
-                <div class="agenda-item" v-for="ev in events">
-                    <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
-                    <h6>{{geteventtime(ev)}}</h6>
-                    <!--name-->
-                    <h5>{{ev.name}}</h5>
-                    <!--description-->
-                    <p>{{ev.description.substring(0,70)}}...
-                        <br/>
-                        <!-- the link is made of: https://www.facebook.com/events/ + page id from API -->
-                        <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">View more...</a>
-                    </p>
+                <div class="c4 columns">
+                    <div class="agenda-item" v-for="ev in events">
+                        <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
+                        <h6>{{geteventtime(ev)}}</h6>
+                        <!--name-->
+                        <h5>{{ev.name}}</h5>
+                        <!--description-->
+                        <p>{{ev.description.substring(0,70)}}...
+                            <br/>
+                            <!-- the link is made of: https://www.facebook.com/events/ + page id from API -->
+                            <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">View more...</a>
+                        </p>
+                    </div>
+                    <div>
+                        <h4 v-text="loadingplaceholder" v-if="notloaded"></h4>
+                    </div>
+                    <button @click="getevents">
+                        Show More
+                    </button>
+                </div>
+                <div class="c6 off-c2 columns">
+                    <!-- place for a map? -->
+                    <google-map :center="center" :zoom="7" style="width: 100%; height: 500px">
+                        <!--<google-marker v-for="ev in events" :position="getmarkerposition(ev)" :clickable="true" :draggable="true" @click="center=getmarkerposition(ev)"></google-marker>-->
+                    </google-map>
                 </div>
             </div>
         </div>
@@ -113,57 +127,105 @@
 
 
 <!-- VueJS -->
-<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js "></script>
+<!-- Lodash -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js "></script>
 <!-- Axios -->
 <!-- NB: htpp library for javascript -->
 <!-- asyncronous get/put etc requests -->
-<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js "></script>
+<!-- Using the vue-gmaps library -->
+<!--<script src="vue-google-maps.js "></script>-->
+
 
 <script>
+    // Vue.use(VueGoogleMaps, {
+    //     load: {
+    //         key: 'AIzaSyAyGLhQ3ApHbdbFX1GWlyn2lwaNmV6Cpfg'
+    //     },
+    //     // Demonstrating how we can customize the name of the components
+    //     installComponents: false,
+    // });
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     Vue.component('google-map', VueGoogleMaps.Map);
+    //     Vue.component('google-marker', VueGoogleMaps.Marker);
     var app = new Vue({
-        el: '#homepage',
-        data: {
-            events: [],
-        },
-        created() {
-            this.getevents();
-        },
-        methods: {
-            // before you want to run the function to call the api, you want to debounce
-            // debounce is a basic function in lodash, that waits for certain amount of time to pass before the method is run
-            getevents: function() {
-                // because of inheritance we need to get the reference to the app
-                var app = this;
-                axios.get('https://proxy-ict-api.herokuapp.com/events/5') // grab data from this link
-                    .then(function(response) {
-                        console.dir(response);
-
-                        app.events = response.data;
-                    })
-                    .catch(function(error) { // error occured case
-                        app.events = [];
-                    })
+            el: '#homepage',
+            data: {
+                // events obtained from API
+                events: [],
+                // the google maps data 
+                // center: {
+                //     lat: 10.0,
+                //     lng: 10.0
+                // },
+                eventnumber: 2,
+                eventnumberincrement: 3,
+                loadingplaceholder: "Loading...",
+                notloaded: true,
             },
-            geteventtime: function(event) {
-                ds = new Date(event.start_time);
-                de = new Date(event.end_time);
+            created() {
+                this.getevents();
+            },
+            methods: {
+                // before you want to run the function to call the api, you want to debounce
+                // debounce is a basic function in lodash, that waits for certain amount of time to pass before the method is run
+                getevents: function() {
+                    // because of inheritance we need to get the reference to the app
+                    notloaded = true;
+                    var app = this;
+                    axios.get('https://proxy-ict-api.herokuapp.com/events/' + app.eventnumber) // grab data from this link
+                        .then(function(response) {
+                            console.dir(response);
 
-                function addZero(i) {
-                    if (i < 10) {
-                        i = "0" + i;
-                    }
-                    return i;
-                };
+                            app.events = response.data;
+                            app.eventnumber += 3;
+                            // to hide the loading placeholder
+                            app.notloaded = false;
+                        })
+                        .catch(function(error) { // error occured case
+                            app.events = [];
+                        })
+                },
+                // since the time is returned as string it is not parsed into datetime by default
+                // this custom method prepares the correct representation of the date
+                geteventtime: function(event) {
+                    ds = new Date(event.start_time);
+                    de = new Date(event.end_time);
+
+                    function addZero(i) {
+                        if (i < 10) {
+                            i = "0" + i;
+                        }
+                        return i;
+                    };
 
 
-                datestring = ds.getFullYear() + '-' + ds.getMonth() + '-' + ds.getDate() + ': ' +
-                    addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
-                    addZero(de.getHours()) + ':' + addZero(de.getMinutes());
+                    datestring = ds.getFullYear() + '-' + ds.getMonth() + '-' + ds.getDate() + ': ' +
+                        addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
+                        addZero(de.getHours()) + ':' + addZero(de.getMinutes());
 
-                return datestring;
+                    return datestring;
+                },
+                // get the correct marker representation to display on map
+                // getmarkerposition: function(event) {
+                //     var marker = {
+                //         // position: {
+                //         //     lat: event.place.location.latitude,
+                //         //     lng: event.place.location.longitude
+                //         // }
+                //         position: {
+                //             lat: 10.0,
+                //             lng: 10.0
+                //         }
+                //     };
+                //     console.dir(marker);
+                //     return marker;
+                // }
             }
-        }
-    })
+        })
+        // });
 </script>
 
 

@@ -1,0 +1,19 @@
+{
+  "name": "proxy_website",
+  "version": "1.0.0",
+  "description": "the proxy website redesign assignment. will be made public when ready",
+  "main": "pages/home/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dee-me-tree-or-love/proxy_website.git"
+  },
+  "author": "Dmitrii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dee-me-tree-or-love/proxy_website/issues"
+  },
+  "homepage": "https://github.com/dee-me-tree-or-love/proxy_website#readme"
+}

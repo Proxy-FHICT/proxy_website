@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>page.js</title>
+
+    <style>
+      #nav {
+        box-sizing: border-box;
+        left: 0;
+        padding: 0.3rem;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+      #map-canvas {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+      }
+    </style>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/0.11.10/vue.min.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAKtDnOejBLUBT0rrx3g7VqhFTWlQeYaLU"></script>
+
+    <script type="x-template" id="autocomplete-input-box">
+      <input type="text" placeholder="Put anything." v-model="text" v-style="style">
+    </script>
+
+    <script defer>
+      (function (w, d, n, _, $, Vue, GM) {
+
+        /** jQuery functions */
+
+        var documentLoaded = function () {
+          var dfr = new $.Deferred();
+          $(d).ready(dfr.resolve);
+          dfr.promise();
+        };
+
+
+        /** Vue ViewModels */
+
+        Vue.component('autocomplete-input-box', {
+          replace: true,
+          template: '#autocomplete-input-box',
+          data: function () {
+            return {
+              text: '',
+              style: {
+                boxSizing: 'border-box',
+                fontSize: '1.2rem',
+                padding: '3px',
+                position: 'relative',
+                width: '100%'
+              }
+            };
+          },
+          watch: {
+            text: function (val, old) {
+              if (val === old || 3 > val.length) return;
+              this.$dispatch('lookup:dispatch', val);
+            }
+          }
+        });
+
+        var nav = new Vue({
+          data: {
+            countries: []
+          },
+          events: {
+            'lookup:dispatch': function (text) {
+              var countries = this.$get('countries');
+              var index = _.chain(countries)
+              .pluck('name')
+              .pluck('common')
+              .indexOf(text)
+              .value();
+
+              if (0 > index) return;
+
+              var country = countries[index];
+              this.$emit('lookup', country);
+            }
+          }
+        });
+
+
+        /** Google Maps */
+
+        var mapCanvas = d.createElement('div');
+        mapCanvas.setAttribute('id', 'map-canvas');
+
+        var latLng = new GM.LatLng(35.6833, 139.6833);
+        var map = new GM.Map(mapCanvas, { center: latLng, zoom: 10 });
+
+        var mapReset = function (center, zoom) {
+          GM.event.trigger(map, 'resize');
+          map.setCenter(center || map.getCenter());
+          map.setZoom(zoom || map.getZoom());
+        };
+
+
+        /** JSON datas */
+
+        var countriesLoaded = $.get('//cdn.rawgit.com/mledoze/countries/master/dist/countries.json');
+
+        var activeCountryLoaded = function (code) {
+          var url = '//cdn.rawgit.com/mledoze/countries/master/data/' + code + '.geo.json';
+          return $.get(url);
+        };
+
+
+        /** Main process */
+
+        var main = function (doc, countries) {
+          nav.$mount('#nav');
+          nav.$set('countries', countries[0]);
+
+          nav.$on('lookup', function (country) {
+            activeCountryLoaded(country.cca3.toLowerCase()).then(function (resp) {
+              _.each(resp.features[0].geometry.coordinates, function (coordinate) {
+                var paths = _.chain(coordinate[0])
+                .map(function (coord) { return new GM.LatLng(coord[1], coord[0]); })
+                .value();
+                var polygon = new GM.Polygon({
+                  paths: paths,
+                  strokeColor: '#FF0000',
+                  strokeWeight: 3,
+                  fillColor: '#FF0000',
+                  fillOpacity: 0.35
+                });
+                polygon.setMap(map);
+              });
+            }, error);
+            var latLng = new GM.LatLng(country.latlng[0], country.latlng[1]);
+            map.panTo(latLng);
+          });
+
+          d.body.appendChild(mapCanvas);
+          mapCanvas.style.position = 'absolute';
+          mapReset(latLng, 3);
+        };
+
+        var error = function (err) {
+          console.error(err.message);
+        };
+
+        var promises = [
+          documentLoaded(),
+          countriesLoaded
+        ];
+
+        $.when.apply(undefined, promises).then(main, error);
+
+      })(window, document, navigator, _, jQuery, Vue, google.maps);
+    </script>
+
+  </head>
+  <body>
+    <nav id="nav">
+      <div v-component="autocomplete-input-box"></div>
+    </nav>
+  </body>
+</html>
