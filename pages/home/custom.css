@@ -92,3 +92,33 @@ header {
 .pale-txt {
     color: rgba(0, 0, 0, 0.5)
 }
+
+
+/* Transitions
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* maybe some other transition, I dunno... */
+
+.agenda-list-enter-active,
+.agenda-list-leave-active {
+    transition: all 1s;
+}
+
+.agenda-list-enter,
+.agenda-list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+
+/*.btns-enter-active,
+.btns-leave-active {
+    transition: all 1s;
+}
+
+.btns-enter,
+.btns-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}*/

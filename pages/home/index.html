@@ -119,25 +119,28 @@
                     Agenda
                 </h1>
                 <div class="c6 columns">
-                    <div class="agenda-item" v-for="ev in events">
-                        <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
-                        <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
-                        <!--name-->
-                        <h5>{{ev.name}}</h5>
-                        <!--description-->
-                        <p>{{ev.description.substring(0,100)}}...<br/>
-                            <span style="line-height:3em;">
+                    <transition-group name="agenda-list">
+                        <div class="agenda-item" v-for="ev in events" :key="ev.start_time">
+                            <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
+                            <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
+                            <!--name-->
+                            <h5>{{ev.name}}</h5>
+                            <!--description-->
+                            <p>{{ev.description.substring(0,100)}}...<br/>
+                                <span style="line-height:3em;">
                             <!-- the link is made of: https://www.facebook.com/events/ + page id from API -->
                             <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">Updates on Facebook</a>
                             </span>
-                        </p>
-                    </div>
+                            </p>
+                        </div>
+                    </transition-group>
                     <!-- Placeholder to show loading sign until the results are obtained-->
                     <div>
                         <h4 v-text="loadingplaceholder" v-if="notloaded"></h4>
                     </div>
 
                     <!-- Buttons -->
+                    <!--<transition name="btns">-->
                     <div>
                         <button @click="getevents">
                         More Events!
@@ -146,8 +149,10 @@
                             Show less...
                         </button>
                     </div>
+                    <!--</transition>-->
 
                 </div>
+
                 <!--<div class="c6 off-c2 columns">-->
                 <!-- place for a map? -->
                 <!--<google-map :center="center" :zoom="7" style="width: 100%; height: 500px">-->
@@ -210,7 +215,8 @@
 <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js "></script>
 <!-- Using the vue-gmaps library -->
 <!--<script src="vue-google-maps.js "></script>-->
-
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
     // Vue.use(VueGoogleMaps, {
@@ -275,7 +281,11 @@
                     // because of inheritance we need to get the reference to the app
                     notloaded = true;
                     this.eventnumber = this.EVENTNUMBERINCREMENT; // reset
-                    this.loadevents(this.eventnumber)
+                    this.loadevents(this.eventnumber);
+                    // scroll back to top
+                    $("html, body").animate({
+                        scrollTop: $("#agenda").offset().top
+                    }, 500);
                 },
                 // since the time is returned as string it is not parsed into datetime by default
                 // this custom method prepares the correct representation of the date
