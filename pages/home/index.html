@@ -98,7 +98,7 @@
                 <div class="c3 columns centered-hor">
                     <img src="basic_star.png" class="value-img" />
                     <h5>Competitions</h5>
-                    <h6>Join our gaming and sports challenges TO WIN BIG</h6>
+                    <h6>Join our gaming and sports challenges to WIN BIG</h6>
                 </div>
                 <div class="c3 columns centered-hor">
                     <img src="basic_star.png" class="value-img" />
@@ -121,19 +121,23 @@
                 <div class="c6 columns">
                     <div class="agenda-item" v-for="ev in events">
                         <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
-                        <h6>{{geteventtime(ev)}}</h6>
+                        <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
                         <!--name-->
                         <h5>{{ev.name}}</h5>
                         <!--description-->
-                        <p>{{ev.description.substring(0,100)}}...
-                            <br/>
+                        <p>{{ev.description.substring(0,100)}}...<br/>
+                            <span style="line-height:3em;">
                             <!-- the link is made of: https://www.facebook.com/events/ + page id from API -->
-                            <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">View more...</a>
+                            <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">Updates on Facebook</a>
+                            </span>
                         </p>
                     </div>
+                    <!-- Placeholder to show loading sign until the results are obtained-->
                     <div>
                         <h4 v-text="loadingplaceholder" v-if="notloaded"></h4>
                     </div>
+
+                    <!-- Buttons -->
                     <div>
                         <button @click="getevents">
                         More Events!
@@ -142,6 +146,7 @@
                             Show less...
                         </button>
                     </div>
+
                 </div>
                 <!--<div class="c6 off-c2 columns">-->
                 <!-- place for a map? -->
@@ -158,10 +163,39 @@
     <!-- issue 6 -->
     <section>
         <div id="contacts" class="container section">
+            <div class="row centered-hor section-head">
+                <h1 class="">
+                    Contacts
+                </h1>
+                <div class="c6 columns off-c3">
+                    <br/>
+                    <p>We are always happy to see you, answer all the questions and offer all the help <span class="pale-txt">(and cookies)</span> we can</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="c5 columns">
+                    <img src="https://www.pinoyhouseplans.com/wp-content/uploads/2014/05/pinoy-house-plans-2014004-second-floor.jpg" style="width:100%;" />
+                </div>
+                <div class="c5 columns off-c2 centered-hor">
+                    <!-- would be awesome to make it centered -->
+                    <h5>Proxy Room</h5>
+                    <p>2.60<br/>Second Floor<br/>Fontys R1</p>
 
+                    <h6>Address</h6>
+                    <p>Rachelsmolen 1<br/>5612 MA Eindhoven<br/>Noord-Brabant</p>
+
+                    <h6>Reach Us </h6>
+                    <p><a href="mailto:name@example.com">ei-proxy@fontys.nl</a><br/>
+                        <a href="https://www.facebook.com/FontysProxy" target="_blank">@Facebook</a></p>
+                </div>
+            </div>
         </div>
     </section>
     <!-- END OF CONTACTS -->
+
+    <!-- FOOTER -->
+    <!-- issue 7 -->
+    <!-- END OF FOOTER -->
 
 </body>
 
@@ -263,6 +297,15 @@
 
                     return datestring;
                 },
+                checkupcomingevent: function(event) {
+                    ds = new Date(event.start_time);
+                    if (ds >= Date.now()) {
+                        return "highlight-txt";
+                    } else {
+                        return "pale-txt";
+                    }
+                },
+
                 // get the correct marker representation to display on map
                 // getmarkerposition: function(event) {
                 //     var marker = {

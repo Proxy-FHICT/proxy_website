@@ -86,4 +86,9 @@ header {
 
 .highlight-txt {
     color: orange;
+    font-weight: bold;
+}
+
+.pale-txt {
+    color: rgba(0, 0, 0, 0.5)
 }
