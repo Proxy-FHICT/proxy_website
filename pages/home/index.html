@@ -32,22 +32,36 @@
 </head>
 
 <body>
-    <div id="homepage">
-
-        <!-- should be split after into resuable blocks -->
 
 
+    <!-- should be split after into resuable blocks -->
 
-        <!-- NAVBAR -->
-        <!-- issue 1 -->
-        <!-- END OF NAVBAR -->
 
-        <!-- WELCOME -->
-        <!-- issue 2 -->
-        <!-- END OF WELCOME -->
 
-        <!-- QUOTE -->
-        <!-- issue 3, assigned: Dmitrii -->
+    <!-- NAVBAR -->
+    <!-- issue 1 -->
+    <!-- END OF NAVBAR -->
+
+    <!-- WELCOME -->
+    <!-- issue 2 -->
+    <header>
+        <!--header contains the background picture in css-->
+        <div id="welcome" class="container center-wrap">
+            <div class="centered-hor centered-ver">
+                <!--content goes here-->
+                <div>
+                    <img src="proxy.png" />
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- section closing tag -->
+
+    <!-- END OF WELCOME -->
+
+    <!-- QUOTE -->
+    <!-- issue 3, assigned: Dmitrii -->
+    <section>
         <div id="homequote" class="container section">
             <div class="row">
                 <div class="c12 columns">
@@ -56,47 +70,62 @@
             We are proxy, the student association for the ICT English stream
             Our job is to connect students to each other and companies    
             </code></pre>-->
-                    <h4 class="centered">
+                    <h4 class="centered-hor">
                         We are proxy, the student association for the ICT English stream <br/> Our job is to connect students to each other and companies
                     </h4>
                 </div>
             </div>
         </div>
-        <!-- END OF QUOTE -->
+    </section>
+    <!-- END OF QUOTE -->
 
-        <!-- SERVICES -->
-        <!-- issue 4, assigned: Dmitrii -->
+    <!-- SERVICES -->
+    <!-- issue 4, assigned: Dmitrii -->
+    <section>
         <div id="services" class="container section">
             <div class="row">
-                <div class="c4 columns centered">
+                <div class="c3 columns centered-hor">
                     <!-- pictures need to be changed -->
-                    <img src="basic_star.png" class="value-img" /> Entertainment
+                    <img src="basic_star.png" class="value-img" />
+                    <h5>Party</h5>
+                    <h6>Meet other students, share drinks and have fun</h6>
                 </div>
-                <div class="c4 columns centered">
-                    <img src="basic_star.png" class="value-img" /> Connection
+                <div class="c3 columns centered-hor">
+                    <img src="basic_star.png" class="value-img" />
+                    <h5>Classes</h5>
+                    <h6>Learn more about IT at our workshops and lectures</h6>
                 </div>
-                <div class="c4 columns centered">
-                    <img src="basic_star.png" class="value-img" /> Support
+                <div class="c3 columns centered-hor">
+                    <img src="basic_star.png" class="value-img" />
+                    <h5>Competitions</h5>
+                    <h6>Join our gaming and sports challenges TO WIN BIG</h6>
+                </div>
+                <div class="c3 columns centered-hor">
+                    <img src="basic_star.png" class="value-img" />
+                    <h5>Support</h5>
+                    <h6>We are always ready to help with any troubles</h6>
                 </div>
             </div>
         </div>
-        <!-- END OF SERVICES -->
+    </section>
+    <!-- END OF SERVICES -->
 
-        <!-- AGENDA -->
-        <!-- issue 5, assigned: Dmitrii -->
+    <!-- AGENDA -->
+    <!-- issue 5, assigned: Dmitrii -->
+    <section>
         <div id="agenda" class="container section">
             <div class="row">
-                <h1 class="centered">
+                <h1 class="centered-hor section-head">
                     Agenda
                 </h1>
-                <div class="c4 columns">
+                <div class="c6 columns">
                     <div class="agenda-item" v-for="ev in events">
                         <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
                         <h6>{{geteventtime(ev)}}</h6>
                         <!--name-->
                         <h5>{{ev.name}}</h5>
                         <!--description-->
-                        <p>{{ev.description.substring(0,70)}}...
+                        <p>{{ev.description.substring(0,100)}}...
                             <br/>
                             <!-- the link is made of: https://www.facebook.com/events/ + page id from API -->
                             <a :href="'https://www.facebook.com/events/'+ev.id" target="_blank">View more...</a>
@@ -105,24 +134,35 @@
                     <div>
                         <h4 v-text="loadingplaceholder" v-if="notloaded"></h4>
                     </div>
-                    <button @click="getevents">
-                        Show More
-                    </button>
+                    <div>
+                        <button @click="getevents">
+                        More Events!
+                        </button>
+                        <button @click="geteventsreset" v-if="activeless">
+                            Show less...
+                        </button>
+                    </div>
                 </div>
-                <div class="c6 off-c2 columns">
-                    <!-- place for a map? -->
-                    <google-map :center="center" :zoom="7" style="width: 100%; height: 500px">
-                        <!--<google-marker v-for="ev in events" :position="getmarkerposition(ev)" :clickable="true" :draggable="true" @click="center=getmarkerposition(ev)"></google-marker>-->
-                    </google-map>
-                </div>
+                <!--<div class="c6 off-c2 columns">-->
+                <!-- place for a map? -->
+                <!--<google-map :center="center" :zoom="7" style="width: 100%; height: 500px">-->
+                <!--<google-marker v-for="ev in events" :position="getmarkerposition(ev)" :clickable="true" :draggable="true" @click="center=getmarkerposition(ev)"></google-marker>-->
+                <!--</google-map>-->
+                <!--</div>-->
             </div>
         </div>
-        <!-- END OF AGENDA -->
+    </section>
+    <!-- END OF AGENDA -->
 
-        <!-- CONTACTS -->
-        <!-- issue 6 -->
-        <!-- END OF CONTACTS -->
-    </div>
+    <!-- CONTACTS -->
+    <!-- issue 6 -->
+    <section>
+        <div id="contacts" class="container section">
+
+        </div>
+    </section>
+    <!-- END OF CONTACTS -->
+
 </body>
 
 
@@ -151,7 +191,7 @@
     //     Vue.component('google-map', VueGoogleMaps.Map);
     //     Vue.component('google-marker', VueGoogleMaps.Marker);
     var app = new Vue({
-            el: '#homepage',
+            el: '#agenda',
             data: {
                 // events obtained from API
                 events: [],
@@ -160,33 +200,48 @@
                 //     lat: 10.0,
                 //     lng: 10.0
                 // },
-                eventnumber: 2,
-                eventnumberincrement: 3,
-                loadingplaceholder: "Loading...",
+                eventnumber: 0,
+                EVENTNUMBERINCREMENT: 2,
+                loadingplaceholder: "Loading... ",
                 notloaded: true,
+                activeless: false,
             },
             created() {
                 this.getevents();
             },
             methods: {
-                // before you want to run the function to call the api, you want to debounce
-                // debounce is a basic function in lodash, that waits for certain amount of time to pass before the method is run
-                getevents: function() {
-                    // because of inheritance we need to get the reference to the app
-                    notloaded = true;
+                loadevents: function(number) {
                     var app = this;
-                    axios.get('https://proxy-ict-api.herokuapp.com/events/' + app.eventnumber) // grab data from this link
+                    axios.get('https://proxy-ict-api.herokuapp.com/events/' + number) // grab data from this link
                         .then(function(response) {
                             console.dir(response);
 
-                            app.events = response.data;
-                            app.eventnumber += 3;
-                            // to hide the loading placeholder
+                            app.events = response.data
+                                // to hide the loading placeholder
                             app.notloaded = false;
+                            if (app.eventnumber > app.EVENTNUMBERINCREMENT) {
+                                app.activeless = true;
+                            } else {
+                                app.activeless = false;
+                            }
                         })
                         .catch(function(error) { // error occured case
                             app.events = [];
                         })
+                },
+                getevents: function() {
+                    // because of inheritance we need to get the reference to the app
+                    notloaded = true;
+                    this.eventnumber += this.EVENTNUMBERINCREMENT;
+
+
+                    this.loadevents(this.eventnumber)
+                },
+                geteventsreset: function() {
+                    // because of inheritance we need to get the reference to the app
+                    notloaded = true;
+                    this.eventnumber = this.EVENTNUMBERINCREMENT; // reset
+                    this.loadevents(this.eventnumber)
                 },
                 // since the time is returned as string it is not parsed into datetime by default
                 // this custom method prepares the correct representation of the date

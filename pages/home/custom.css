@@ -1,17 +1,89 @@
+html,
+body {
+    height: 100%;
+    /* not sure if any use of this */
+    scroll-behavior: smooth;
+}
+
 .value-img {
     display: block;
     text-align: center;
     margin: 0em auto 1em;
 }
 
-.centered {
+
+/* section marginining
+--------------------*/
+
+.section-head {
+    margin-bottom: 1em;
+}
+
+
+/* horizontally centered */
+
+.centered-hor {
     text-align: center;
 }
 
 .section {
-    margin: 5em auto 5em;
+    margin: 10em auto 10em;
+}
+
+.x2margin {
+    margin: 20em auto 20em;
+}
+
+.x4margin {
+    margin: 40em auto 40em;
 }
 
 .agenda-item {
     margin: 2.5em auto 2.5em;
+}
+
+
+/* these two should go together */
+
+.center-wrap {
+    /*content: "";*/
+    height: 100%;
+    display: table;
+}
+
+.centered-ver {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+
+header {
+    height: 100%;
+    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.45)), url(http://www.minimit.com/images/picjumbo.com_IMG_6648.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/* smaller than tablet */
+
+@media (max-width: 750px) {
+    header {
+        background-attachment: local;
+    }
+}
+
+
+/* Text colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.white-txt {
+    color: white;
+}
+
+.highlight-txt {
+    color: orange;
 }
