@@ -58,7 +58,8 @@
 
 <script>
     import Axios from 'axios';
-    import {$, jQuery} from 'jquery';
+    // yes, this is weird, but if we want to use $ to reference jquery as we usually do, the webpack starts to complain
+    import jQuery from 'jquery';
 
     export default {
         data() {
@@ -105,8 +106,8 @@
                     this.eventnumber = this.EVENTNUMBERINCREMENT; // reset
                     this.loadevents(this.eventnumber);
                     // scroll back to top
-                    $("html, body").animate({
-                        scrollTop: $("#agenda").offset().top
+                    jQuery("html, body").animate({
+                        scrollTop: jQuery("#agenda").offset().top
                     }, 500);
                 },
                 // since the time is returned as string it is not parsed into datetime by default
