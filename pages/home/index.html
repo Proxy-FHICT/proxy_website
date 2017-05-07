@@ -21,9 +21,11 @@
     <link rel="stylesheet" href="https://milligram.github.io/styles/main.css">-->
 
     <!-- Skeleton CSS -->
-    <link rel="stylesheet" href="../../globals/skeleton-css/normalize.css">
-    <link rel="stylesheet" href="../../globals/skeleton-css/skeleton.css">
+    <link rel="stylesheet" href="./skeleton-css/normalize.css">
+    <link rel="stylesheet" href="./skeleton-css/skeleton.css">
 
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/7ade5183e4.js"></script>
 
     <!-- Custom css -->
     <!-- TO BO CHANGED! -->
@@ -34,12 +36,25 @@
 <body>
 
 
-    <!-- should be split after into resuable blocks -->
-
+    <!-- should be split after into resuable components! -->
+    <!--<div id="home">-->
 
 
     <!-- NAVBAR -->
     <!-- issue 1 -->
+    <!-- THIS REALLY REQUIRES A SEPARATE VUE COMPONENT! -->
+    <div>
+        <div class="navigation" v-if="!(menuactive)">
+            <h5>
+                <a class="menu-btn" v-on:click="showmenu">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
+                <a class="menu-title" href="#init"><b>PROXY:/ </b></a>
+            </h5>
+        </div>
+        <!-- navigation itself -->
+
+    </div>
     <!-- END OF NAVBAR -->
 
     <!-- WELCOME -->
@@ -58,10 +73,11 @@
     <!-- section closing tag -->
 
     <!-- END OF WELCOME -->
+    <div id="init"></div>
 
     <!-- QUOTE -->
     <!-- issue 3, assigned: Dmitrii -->
-    <section>
+    <section id="we-are">
         <div id="homequote" class="container section">
             <div class="row">
                 <div class="c12 columns">
@@ -75,6 +91,18 @@
                     </h4>
                 </div>
             </div>
+            <div class="row">
+                <div class="c8 off-c2 columns centered-hor">
+                    <pre><code class="">What is Proxy?
+"... A proxy, in its most general form, is a class 
+functioning as an interface to something else. 
+The proxy could interface to anything:..."" 
+-- <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank">Wikipedia</a>  --</code></pre>
+                    <h4>
+                        And so we interface to fun!
+                    </h4>
+                </div>
+            </div>
         </div>
     </section>
     <!-- END OF QUOTE -->
@@ -84,6 +112,11 @@
     <section>
         <div id="services" class="container section">
             <div class="row">
+                <h1 class="centered-hor section-head">
+                    Event Types
+                </h1>
+            </div>
+            <div class="row top-margin">
                 <div class="c3 columns centered-hor">
                     <!-- pictures need to be changed -->
                     <img src="basic_star.png" class="value-img" />
@@ -120,7 +153,7 @@
                 </h1>
                 <div class="c6 columns">
                     <transition-group name="agenda-list">
-                        <div class="agenda-item" v-for="ev in events" :key="ev.start_time">
+                        <div class="agenda-item" v-for="ev in events" :key="ev.start_time" v-cloak="">
                             <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
                             <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
                             <!--name-->
@@ -183,15 +216,19 @@
                 </div>
                 <div class="c5 columns off-c2 centered-hor">
                     <!-- would be awesome to make it centered -->
-                    <h5>Proxy Room</h5>
-                    <p>2.60<br/>Second Floor<br/>Fontys R1</p>
+                    <h5><b>Proxy Room</b></h5>
+                    <p>2.60<br/>Second Floor<br/>Fontys R1<br/><br/></p>
+                    <!-- need to preserve double line space -->
+                    <h6><b>Address</b></h6>
+                    <!--Latitude:51.452371°
+                        Longitude:5.481289°-->
+                    <p><i class="fa fa-compass" aria-hidden="true"></i> &#160&#160<a href="https://www.google.com/maps?q=Fontys%20-%20Campus%20Rachelsmolen" target="_blank">51.452371; 5.481289</a>
+                        <br/>Rachelsmolen 1<br/>5612 MA Eindhoven<br/>Noord-Brabant</p>
 
-                    <h6>Address</h6>
-                    <p>Rachelsmolen 1<br/>5612 MA Eindhoven<br/>Noord-Brabant</p>
-
-                    <h6>Reach Us </h6>
-                    <p><a href="mailto:name@example.com">ei-proxy@fontys.nl</a><br/>
-                        <a href="https://www.facebook.com/FontysProxy" target="_blank">@Facebook</a></p>
+                    <h6><b>Reach Us</b></h6>
+                    <p><i class="fa fa-envelope-open-o left" aria-hidden="true"></i> &#160&#160<a href="mailto:name@example.com" target="_blank">ei-proxy@fontys.nl</a><br/>
+                        <i class="fa fa-facebook left" aria-hidden="true"></i> &#160&#160<a href="https://www.facebook.com/FontysProxy" target="_blank">.com/FontysProxy</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -200,8 +237,19 @@
 
     <!-- FOOTER -->
     <!-- issue 7 -->
-    <!-- END OF FOOTER -->
 
+    <div class="container section no-bottom-margin">
+        <div class="row">
+            <div class="c8 off-c2 columns centered-hor">
+                <i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
+                <i><p><br/>Made with love by Proxy Fhict.<br/>Edition 2017</p></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- END OF FOOTER -->
+    <!--</div>-->
+    <!-- END OF HOME TAG -->
 </body>
 
 
@@ -219,6 +267,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
+    // // example of a filter
+    // Vue.filter('uppercase', function(value) {
+    //     return value.toUpperCase();
+    // })
+    // // to use the filter apply the chain: {{ value | filter1 | filter2 ... }}
+
     // Vue.use(VueGoogleMaps, {
     //     load: {
     //         key: 'AIzaSyAyGLhQ3ApHbdbFX1GWlyn2lwaNmV6Cpfg'
@@ -230,7 +284,7 @@
     // document.addEventListener('DOMContentLoaded', function() {
     //     Vue.component('google-map', VueGoogleMaps.Map);
     //     Vue.component('google-marker', VueGoogleMaps.Marker);
-    var app = new Vue({
+    var agendaapp = new Vue({
             el: '#agenda',
             data: {
                 // events obtained from API
@@ -245,6 +299,7 @@
                 loadingplaceholder: "Loading... ",
                 notloaded: true,
                 activeless: false,
+                menuactive: false,
             },
             created() {
                 this.getevents();
@@ -315,6 +370,13 @@
                         return "pale-txt";
                     }
                 },
+
+                // used to display the menu
+                showmenu: function() {
+                    console.log("off");
+                    this.menuactive = true;
+                },
+
 
                 // get the correct marker representation to display on map
                 // getmarkerposition: function(event) {

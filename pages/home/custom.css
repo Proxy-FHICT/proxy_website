@@ -42,6 +42,14 @@ body {
     margin: 2.5em auto 2.5em;
 }
 
+.top-margin {
+    margin-top: 2.5em;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0;
+}
+
 
 /* these two should go together */
 
@@ -60,7 +68,7 @@ body {
 
 header {
     height: 100%;
-    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.45)), url(http://www.minimit.com/images/picjumbo.com_IMG_6648.jpg) no-repeat center center fixed;
+    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.45)), url(https://static.pexels.com/photos/306534/pexels-photo-306534.jpeg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -89,8 +97,36 @@ header {
     font-weight: bold;
 }
 
+.emph-txt {
+    font-weight: bolder;
+}
+
 .pale-txt {
     color: rgba(0, 0, 0, 0.5)
+}
+
+
+/* Code background colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+code.red-bg {
+    background: rgba(255, 0, 0, 0.4)
+}
+
+code.blue-bg {
+    background: rgba(0, 0, 255, 0.4)
+}
+
+code.green-bg {
+    background: rgba(0, 255, 0, 0.4)
+}
+
+
+/* Icons to the left
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+i.left {
+    text-align: left;
 }
 
 
@@ -121,4 +157,45 @@ header {
 .btns-leave-to {
     opacity: 0;
     transform: translateY(30px);
+}*/
+
+
+/* Menu stuff
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.navigation a.menu-btn:hover,
+.navigation a.menu-title:hover {
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.navigation a.menu-btn,
+.navigation a.menu-title {
+    color: rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+.navigation {
+    z-index: 1;
+    position: fixed;
+    margin: 1em 1em 1em 1em;
+}
+
+.navigation * {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+
+/* Cloaking
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+[v-cloak] {
+    display: none;
+}
+
+
+/*
+[v-cloak]::after {
+    content: "Loading..."
 }*/
