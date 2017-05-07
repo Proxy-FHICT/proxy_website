@@ -1,6 +1,11 @@
 <template>
     <div>
-    
+        <!-- NAVBAR -->
+        <!-- issue 1 -->
+        <!-- THIS REALLY REQUIRES A SEPARATE VUE COMPONENT! -->
+        <app-nav></app-nav>
+        <!-- END OF NAVBAR -->
+
         <!-- WELCOME -->
         <!-- issue 2 -->
         <header id="fullscreenimage">
@@ -120,6 +125,7 @@ The proxy could interface to anything:...""
 <script>
     import Agenda from './Agenda.vue';
     import Contacts from './Contacts.vue';
+    import Nav from './Navigation.vue'
     // import {$, jQuery} from 'jquery';
 
     export default {
@@ -150,6 +156,7 @@ The proxy could interface to anything:...""
         components: {
             'app-agenda': Agenda,
             'app-contacts': Contacts,
+            'app-nav': Nav,
         }
     }
 </script>

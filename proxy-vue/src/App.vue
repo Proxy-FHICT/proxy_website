@@ -234,7 +234,7 @@ i.left {
 .navigation {
   z-index: 1;
   position: fixed;
-  margin: 1em 1em 1em 1em;
+  padding: 1em 1em 1em 1em;
 }
 
 .navigation * {
@@ -242,10 +242,8 @@ i.left {
   margin-bottom: 0;
 }
 
-
-
-
-
+/* when active */
+/* see Navigation.vue scoped style */ 
 
 
 /* Cloaking
