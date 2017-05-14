@@ -35,6 +35,9 @@ h1.superfont {
     text-align: center;
 }
 
+
+/* add the media query to make the size between the sections smaller on mobile phones */
+
 .section {
     padding-top: 10em;
 }

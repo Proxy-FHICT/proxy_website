@@ -25,15 +25,16 @@
             <div class="section container">
                 <div class="row">
                     <div class="c8 off-c2 columns centered-hor">
-                         <h3>According to the definition...</h3>
+                         <h4>According to the definition...</h4>
+                         <!-- Need to think of a better way to disply that, since this get's fucked on mobile view -->
                             <pre><code class="smallmargin largecode">"... A proxy, in its most general form, is a class 
 functioning as an interface to something else. 
 The proxy could interface to anything:..." 
                                             -- <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank">Wikipedia</a>  -- 
 </code></pre>
-                        <h3>
+                        <h4>
                             And so we povide the interface to fun!
-                        </h3>
+                        </h4>
                     </div>
                 </div>
             </div>
