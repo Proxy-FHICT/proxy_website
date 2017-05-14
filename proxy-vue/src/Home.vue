@@ -3,7 +3,7 @@
         <!-- NAVBAR -->
         <!-- issue 1 -->
         <!-- THIS REALLY REQUIRES A SEPARATE VUE COMPONENT! -->
-        <app-nav></app-nav>
+        <app-nav :sublinks="anchors"></app-nav>
         <!-- END OF NAVBAR -->
 
         <!-- WELCOME -->
@@ -22,7 +22,7 @@
         <!-- section closing tag -->
     
         <!-- END OF WELCOME -->
-        <div id="init"></div>
+        <!--<div id="init"></div>-->
     
         <!-- QUOTE -->
         <!-- issue 3, assigned: Dmitrii -->
@@ -41,50 +41,39 @@
                         </h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="c8 off-c2 columns centered-hor">
-                        <pre><code class="smallmargin">What is Proxy?
-"... A proxy, in its most general form, is a class 
-functioning as an interface to something else. 
-The proxy could interface to anything:..."" 
--- <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank">Wikipedia</a>  --</code></pre>
-                        <h4>
-                            And so we are the interface to fun!
-                        </h4>
-                    </div>
-                </div>
+               
             </div>
         </section>
         <!-- END OF QUOTE -->
     
         <!-- SERVICES -->
         <!-- issue 4, assigned: Dmitrii -->
-        <section id="services" >
+        <section id="activities" >
             <div class="container section">
                 <div class="row">
                     <h1 class="centered-hor section-head">
-                        Event Types
+                        Our Activities
                     </h1>
                 </div>
                 <div class="row top-margin">
                     <div class="c3 columns centered-hor">
                         <!-- pictures need to be changed -->
-                        <img src="./assets/basic_star.png" class="value-img" />
+                        <img src="./assets/lnr-magic-wand.svg" style="height: 80px;" class="value-img" />
                         <h5>Party</h5>
                         <h6>Meet other students, share drinks and have fun</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/basic_star.png" class="value-img" />
+                        <img src="./assets/lnr-pie-chart.svg" style="height: 80px;" class="value-img" />
                         <h5>Classes</h5>
                         <h6>Learn more about IT at our workshops and lectures</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/basic_star.png" class="value-img" />
+                        <img src="./assets/lnr-rocket.svg" style="height: 80px;" class="value-img" />
                         <h5>Competitions</h5>
                         <h6>Join our gaming and sports challenges to WIN BIG</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/basic_star.png" class="value-img" />
+                        <img src="./assets/lnr-heart.svg" style="height: 80px;" class="value-img" />
                         <h5>Support</h5>
                         <h6>We are always ready to help with any troubles</h6>
                     </div>
@@ -95,7 +84,7 @@ The proxy could interface to anything:...""
     
         <!-- AGENDA -->
         <!-- issue 5, assigned: Dmitrii -->
-    
+        
         <app-agenda></app-agenda>
 
         <!-- END OF AGENDA -->
@@ -107,15 +96,7 @@ The proxy could interface to anything:...""
 
         <!-- FOOTER -->
         <!-- issue 7 -->
-
-        <div class="container section no-bottom-margin">
-            <div class="row">
-                <div class="c8 off-c2 columns centered-hor">
-                    <i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
-                    <i><p><br/>Made with love by Proxy Fhict.<br/>Edition 2017</p></i>
-                </div>
-            </div>
-        </div>
+        <app-footer></app-footer>
 
         <!-- END OF FOOTER -->
 
@@ -125,13 +106,28 @@ The proxy could interface to anything:...""
 <script>
     import Agenda from './Agenda.vue';
     import Contacts from './Contacts.vue';
-    import Nav from './Navigation.vue'
+    import Nav from './Navigation.vue';
+    import Footer from './Footer.vue';
     // import {$, jQuery} from 'jquery';
 
     export default {
         data() {
           return {
-              
+              anchors: [
+                  {
+                      name: "HELLO",
+                      url: "#we-are",
+                  },
+                  {
+                      name: "AGENDA",
+                      url: "#agenda",
+                  },
+                  {
+                      name: "CONTACTS",
+                      url: "#contacts",
+                  }
+                  
+              ]
           }
         },
         methods: {
@@ -157,6 +153,7 @@ The proxy could interface to anything:...""
             'app-agenda': Agenda,
             'app-contacts': Contacts,
             'app-nav': Nav,
+            'app-footer': Footer,
         }
     }
 </script>

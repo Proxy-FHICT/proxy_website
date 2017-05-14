@@ -2,6 +2,7 @@
     <!-- AGENDA -->
     <!-- issue 5, assigned: Dmitrii -->
     <section>
+    
         <div id="agenda" class="container section">
             <div class="row">
                 <h1 class="centered-hor section-head">
@@ -9,7 +10,7 @@
                 </h1>
                 <div class="c6 columns">
                     <transition-group name="agenda-list">
-                        <div class="agenda-item" v-for="ev in events" :key="ev.start_time" >
+                        <div class="agenda-item" v-for="ev in events" :key="ev.start_time" :id="ev.start_time">
                             <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
                             <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
                             <!--name-->
@@ -32,7 +33,7 @@
     
                     <!-- Buttons -->
                     <!--<transition name="btns">-->
-                    <div>
+                    <div id="agenda-load-buttons">
                         <button @click="getevents">
                             More Events!
                         </button>
@@ -80,7 +81,7 @@
                             console.dir(response);
 
                             app.events = response.data
-                                // to hide the loading placeholder
+                                // TODO: to hide the loading placeholder
                             app.notloaded = false;
                             if (app.eventnumber > app.EVENTNUMBERINCREMENT) {
                                 app.activeless = true;
@@ -97,8 +98,14 @@
                     this.notloaded = true;
                     this.eventnumber += this.EVENTNUMBERINCREMENT;
 
-
+                    // TODO: make a promise out of it, and scroll to the one before the last event
                     this.loadevents(this.eventnumber)
+                    
+
+                    // agenda-load-buttons
+                    // jQuery("html, body").animate({
+                    //     scrollTop: jQuery("#"+this.events[this.events.length-this.EVENTNUMBERINCREMENT].start_time).offset().top - 150
+                    // }, 500);
                 },
                 geteventsreset: function() {
                     // because of inheritance we need to get the reference to the app
@@ -123,9 +130,20 @@
                         }
                         return i;
                     };
-
-
-                    let datestring = ds.getFullYear() + '-' + ds.getMonth() + '-' + ds.getDate() + ': ' +
+                    function monthName(number){
+                        let months=[
+                            "January", "February", "March", "April",
+                            "May", "June", "July", "August",
+                            "September", "October", "November", "December",
+                        ];
+                        return months[number];
+                    }
+                    // old version
+                    // let datestring = ds.getFullYear() + '-' + ds.getMonth() + '-' + ds.getDate() + ': ' +
+                    //     addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
+                    //     addZero(de.getHours()) + ':' + addZero(de.getMinutes());
+                    
+                    let datestring = ds.getDate() + ' ' + monthName(ds.getMonth()) + ': ' +
                         addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
                         addZero(de.getHours()) + ':' + addZero(de.getMinutes());
 

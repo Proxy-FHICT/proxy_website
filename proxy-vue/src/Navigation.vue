@@ -8,39 +8,87 @@
                 <a class="menu-btn" v-on:click="showmenu">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
-                <a class="menu-title" href="#init"><b>PROXY:/ </b></a>
+                <!-- <a class="menu-title" href="#init"><b>PROXY </b></a> -->
             </h5>
         </div>
         <!-- navigation itself -->
-        <div class="navigation sidemenu" v-if="menuactive">
-            <div>
-                <h5>
-                    <a class="menu-btn" v-on:click="closemenu">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                    <a class="menu-title" href="#init"><b>PROXY:/ </b></a>
-                </h5>
+        <transition name="slide">
+            <div class="navigation sidemenu" v-if="menuactive">
+                <div class="close handler">
+                    <h5>
+                        <a class="menu-btn" v-on:click="closemenu">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                        </a>
+                    </h5>
+                </div>
+                <div>
+                    <h5>
+                        <a class="menu-title" href="#"  @click="closemenu"><b>PROXY</b></a>
+                    </h5>
+                </div>
+                <div class="links level" v-if="anchors.length>0">
+                    <ul class="whitish-txt">
+                        <li v-for="anchor in anchors">
+                            <a :href="anchor.url" @click="closemenu">#{{anchor.name.toLowerCase()}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="links level">
+                    <ul class="whitish-txt ">
+                        <li v-for="path in paths">
+                            <a :href="path.url" @click="closemenu">{{path.name.toUpperCase()}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="links">
-                <ul class="whitish-txt ">
-                    <li v-for="path in paths">
-                        <a :href="path.url">{{path.name}}</a>
-                        <ul v-if="path.sublinks.length>0" class="sublinks">
-                            <li v-for="sublink in path.sublinks" class="greyish-txt">
-                                <a :href="'/'+sublink.url"><i>{{sublink.name}}</i></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </transition>
     </div>
 </template>
+
+
 <!-- END OF NAVBAR -->
 
 <style scoped>
+
+
+/* Menu stuff
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.navigation a.menu-btn:hover,
+.navigation a.menu-title:hover {
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.navigation a.menu-btn,
+.navigation a.menu-title {
+  color: rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+}
+
+.navigation {
+  z-index: 1;
+  position: fixed;
+  padding: 1em 1em 1em 1em;
+}
+
+.navigation * {
+  display: inline-block;
+/*   margin-bottom: 0;*/
+}
+
+
+/* Transition stuff
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.slide-enter-active, .slide-leave-active {
+  transition: .4s
+}
+.slide-enter, .slide-leave-to /* .fade-leave-active in <2.1.8 */ {
+  transform: translateX(-300px);
+}
+
 .sidemenu{
-    background: rgba(25,0,0,0.8);
+    background: rgba(25,0,0,1);
     float: right;
     height: 100%;
 }
@@ -53,7 +101,7 @@
 
 .navigation.sidemenu a.menu-btn,
 .navigation.sidemenu a.menu-title {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
 }
 
@@ -68,11 +116,7 @@
     display: block;
 }
 .links{
-    margin-left: 1.8em;
-}
-.sublinks{
-    margin-top:0;
-    margin-bottom: 0.5em;
+    
 }
 
 .whitish-txt{
@@ -82,13 +126,30 @@
     color: rgba(255,255,255,0.25);
 }
 
+.sidemenu .links a{
+    font-weight: bolder;
+    padding-top: 0.5em;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+}
+.sidemenu .links a:hover{
+    color: rgba(255, 255, 255, 0.8);
+}
+.close.handler{
+    float:right;
+}
+
+div.links.level{
+    border-top: rgba(255,255,255,0.4) 1pt solid;
+    padding-top: 0.7em;
+}
 </style>
 
 
 <script>
 
 export default {
- 
+        props: ['sublinks'],
         data() {
           return {
               menuactive: false,
@@ -96,22 +157,11 @@ export default {
                   {
                       name: "HOME",
                       url: "/",
-                      sublinks: [
-                          {
-                            name: "agenda",
-                            url: "#agenda", 
-                          },
-                          {
-                            name: "contacts",
-                            url: "#contacts", 
-                          },
-                      ]
                   },
-                  {
-                      name: "ABOUT",
-                      url: "/about",
-                      sublinks: [],
-                  }
+                //   {
+                //       name: "ABOUT",
+                //       url: "/about",
+                //   }
 
               ],
           }
@@ -126,6 +176,17 @@ export default {
                   console.log(this.menuactive);
                 this.menuactive = false;
                 console.log("off");
+            }
+        },
+        computed: {
+            anchors() {
+                if(this.sublinks != null){
+                    for(let i=0; i<this.sublinks.length; i++){
+                        console.dir(this.sublinks[i]);
+                    }
+                    return this.sublinks;
+                }
+                return [];
             }
         }
 }

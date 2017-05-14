@@ -26,6 +26,12 @@ body {
   margin: 0;
 }
 
+.superfont{
+  font-family: 'Josefin Slab', serif;
+}
+h1.superfont{
+  font-size: 6.5em;
+}
 .value-img {
   display: block;
   text-align: center;
@@ -54,7 +60,7 @@ body {
 }
 
 .section {
-  margin: 10em auto 10em;
+  padding-top: 10em;
 }
 
 .smallmargin {
@@ -216,36 +222,6 @@ i.left {
 }*/
 
 
-/* Menu stuff
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-.navigation a.menu-btn:hover,
-.navigation a.menu-title:hover {
-  color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.navigation a.menu-btn,
-.navigation a.menu-title {
-  color: rgba(0, 0, 0, 0.15);
-  text-decoration: none;
-}
-
-.navigation {
-  z-index: 1;
-  position: fixed;
-  padding: 1em 1em 1em 1em;
-}
-
-.navigation * {
-  display: inline-block;
-  margin-bottom: 0;
-}
-
-/* when active */
-/* see Navigation.vue scoped style */ 
-
-
 /* Cloaking
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -254,7 +230,13 @@ i.left {
 }
 
 
-
+/*
+*/
+.section-label{
+    display: block;
+    position: static;
+    padding-top: 0.1em;
+}
 
 
 /*
