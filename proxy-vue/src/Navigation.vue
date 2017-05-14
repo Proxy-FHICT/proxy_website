@@ -36,6 +36,7 @@
                 <div class="links level">
                     <ul class="whitish-txt ">
                         <li v-for="path in paths">
+                            <!--<router-link :to="path.url" @click="closemenu">{{path.name.toUpperCase()}}</router-link>-->
                             <a :href="path.url" @click="closemenu">{{path.name.toUpperCase()}}</a>
                         </li>
                     </ul>
@@ -51,98 +52,98 @@
 <style scoped>
 
 
-/* Menu stuff
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    /* Menu stuff
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-.navigation a.menu-btn:hover,
-.navigation a.menu-title:hover {
-  color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
+    .navigation a.menu-btn:hover,
+    .navigation a.menu-title:hover {
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    }
 
-.navigation a.menu-btn,
-.navigation a.menu-title {
-  color: rgba(0, 0, 0, 0.25);
-  text-decoration: none;
-}
+    .navigation a.menu-btn,
+    .navigation a.menu-title {
+    color: rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    }
 
-.navigation {
-  z-index: 1;
-  position: fixed;
-  padding: 1em 1em 1em 1em;
-}
+    .navigation {
+    z-index: 1;
+    position: fixed;
+    padding: 1em 1em 1em 1em;
+    }
 
-.navigation * {
-  display: inline-block;
-/*   margin-bottom: 0;*/
-}
+    .navigation * {
+    display: inline-block;
+    /*   margin-bottom: 0;*/
+    }
 
 
-/* Transition stuff
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.slide-enter-active, .slide-leave-active {
-  transition: .4s
-}
-.slide-enter, .slide-leave-to /* .fade-leave-active in <2.1.8 */ {
-  transform: translateX(-300px);
-}
+    /* Transition stuff
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .slide-enter-active, .slide-leave-active {
+    transition: .4s
+    }
+    .slide-enter, .slide-leave-to /* .fade-leave-active in <2.1.8 */ {
+    transform: translateX(-300px);
+    }
 
-.sidemenu{
-    background: rgba(25,0,0,1);
-    float: right;
-    height: 100%;
-}
+    .sidemenu{
+        background: rgba(25,0,0,1);
+        float: right;
+        height: 100%;
+    }
 
-.navigation.sidemenu a.menu-btn:hover,
-.navigation.sidemenu a.menu-title:hover {
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-}
+    .navigation.sidemenu a.menu-btn:hover,
+    .navigation.sidemenu a.menu-title:hover {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    }
 
-.navigation.sidemenu a.menu-btn,
-.navigation.sidemenu a.menu-title {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-}
-
-.navigation.sidemenu {
-  width: 250px;
-}
-.navigation.sidemenu div{
-    display: block;
-}
-
-.navigation.sidemenu .links * {
-    display: block;
-}
-.links{
-    
-}
-
-.whitish-txt{
-    color: rgba(255,255,255,0.8);
-}
-.greyish-txt{
-    color: rgba(255,255,255,0.25);
-}
-
-.sidemenu .links a{
-    font-weight: bolder;
-    padding-top: 0.5em;
+    .navigation.sidemenu a.menu-btn,
+    .navigation.sidemenu a.menu-title {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
-}
-.sidemenu .links a:hover{
-    color: rgba(255, 255, 255, 0.8);
-}
-.close.handler{
-    float:right;
-}
+    }
 
-div.links.level{
-    border-top: rgba(255,255,255,0.4) 1pt solid;
-    padding-top: 0.7em;
-}
+    .navigation.sidemenu {
+    width: 250px;
+    }
+    .navigation.sidemenu div{
+        display: block;
+    }
+
+    .navigation.sidemenu .links * {
+        display: block;
+    }
+    .links{
+        
+    }
+
+    .whitish-txt{
+        color: rgba(255,255,255,0.8);
+    }
+    .greyish-txt{
+        color: rgba(255,255,255,0.25);
+    }
+
+    .sidemenu .links a{
+        font-weight: bolder;
+        padding-top: 0.5em;
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+    }
+    .sidemenu .links a:hover{
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .close.handler{
+        float:right;
+    }
+
+    div.links.level{
+        border-top: rgba(255,255,255,0.4) 1pt solid;
+        padding-top: 0.7em;
+    }
 </style>
 
 
@@ -158,10 +159,10 @@ export default {
                       name: "HOME",
                       url: "/",
                   },
-                //   {
-                //       name: "ABOUT",
-                //       url: "/about",
-                //   }
+                  {
+                      name: "ABOUT",
+                      url: "/about",
+                  }
 
               ],
           }
