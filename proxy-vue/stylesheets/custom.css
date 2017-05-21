@@ -62,6 +62,10 @@ h1.superfont {
     margin-top: 2.5em;
 }
 
+.top-margin-lg {
+    margin-top: 4em;
+}
+
 .no-bottom-margin {
     margin-bottom: 0;
 }
@@ -120,6 +124,14 @@ header {
 
 .pale-txt {
     color: rgba(0, 0, 0, 0.5)
+}
+
+h6.bigger-txt {
+    font-size: 1.8em;
+}
+
+h5.bigger-txt {
+    font-size: 2em;
 }
 
 

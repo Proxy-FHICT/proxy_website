@@ -12,9 +12,9 @@
                     <transition-group name="agenda-list">
                         <div class="agenda-item" v-for="ev in events" :key="ev.start_time" :id="ev.start_time">
                             <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
-                            <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
+                            <h6 v-bind:class="checkupcomingeventdate(ev)">{{geteventtime(ev)}}</h6>
                             <!--name-->
-                            <h5>{{ev.name}}</h5>
+                            <h5 v-bind:class="checkupcomingeventname(ev)">{{ev.name}}</h5>
                             <!--description-->
                             <p>{{ev.description.substring(0,100)}}...
                                 <br/>
@@ -150,14 +150,22 @@
                     return datestring;
                 },
                 // this method is used to check whether the event is yet to come or has already taken place
-                checkupcomingevent: function(event) {
+                checkupcomingeventname: function(event) {
                     let ds = new Date(event.start_time);
                     if (ds >= Date.now()) {
-                        return "highlight-txt";
+                        return "bigger-txt";
                     } else {
                         return "pale-txt";
                     }
                 },
+                checkupcomingeventdate: function(event) {
+                    let ds = new Date(event.start_time);
+                    if (ds >= Date.now()) {
+                        return "bigger-txt highlight-txt";
+                    } else {
+                        return "pale-txt";
+                    }
+                }
 
         },
 
