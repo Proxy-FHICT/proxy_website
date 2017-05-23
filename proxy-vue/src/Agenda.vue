@@ -61,6 +61,7 @@
     import Axios from 'axios';
     // yes, this is weird, but if we want to use $ to reference jquery as we usually do, the webpack starts to complain
     import jQuery from 'jquery';
+    import moment from 'moment';
 
     export default {
         data() {
@@ -121,8 +122,8 @@
                 // this custom method prepares the correct representation of the date
                 // a really shitty way it is
                 geteventtime: function(event) {
-                    let ds = new Date(event.start_time);
-                    let de = new Date(event.end_time);
+                    let ds = new moment(event.start_time);
+                    let de = new moment(event.end_time);
 
                     function addZero(i) {
                         if (i < 10) {
@@ -143,23 +144,23 @@
                     //     addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
                     //     addZero(de.getHours()) + ':' + addZero(de.getMinutes());
                     
-                    let datestring = ds.getDate() + ' ' + monthName(ds.getMonth()) + ': ' +
-                        addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
-                        addZero(de.getHours()) + ':' + addZero(de.getMinutes());
+                    let datestring = ds.date() + ' ' + monthName(ds.month()) + ': ' +
+                        addZero(ds.hours()) + ':' + addZero(ds.minutes()) + ' - ' +
+                        addZero(de.hours()) + ':' + addZero(de.minutes());
 
                     return datestring;
                 },
                 // this method is used to check whether the event is yet to come or has already taken place
                 checkupcomingeventname: function(event) {
-                    let ds = new Date(event.start_time);
-                    if (ds >= Date.now()) {
+                    let ds = moment(event.start_time);
+                    if (ds >= moment.now()) {
                         return "bigger-txt";
                     } else {
                         return "pale-txt";
                     }
                 },
                 checkupcomingeventdate: function(event) {
-                    let ds = new Date(event.start_time);
+                    let ds = moment(event.start_time);
                     if (ds >= Date.now()) {
                         return "bigger-txt highlight-txt";
                     } else {
