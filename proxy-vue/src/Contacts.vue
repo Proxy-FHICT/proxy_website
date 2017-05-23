@@ -14,9 +14,9 @@
                 </div>
                 <div class="row">
                     <div id="locations-img" class="c5 columns centered-hor">
-                        <!-- needs replacement to the floor plan of fontys -->
+                        <!-- Done! needs replacement to the floor plan of fontys -->
                         
-                            <img src="https://www.pinoyhouseplans.com/wp-content/uploads/2014/05/pinoy-house-plans-2014004-second-floor.jpg" style="max-width: 100%; max-height: 100%;" />
+                            <img src="./assets/floorplan.svg" style="max-width: 100%; max-height: 100%; min-height:100%" />
                         
                     </div>
                     <div id="locations-txt" class="c5 columns off-c2 centered-hor">

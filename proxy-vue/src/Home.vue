@@ -8,6 +8,7 @@
 
         <!-- WELCOME -->
         <!-- issue 2 -->
+        <!-- the huge ass picture is loading rather slow -->
         <header id="fullscreenimage">
             <!--header contains the background picture in css-->
             <div id="welcome" class="container center-wrap" >

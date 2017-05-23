@@ -25,15 +25,16 @@
             <div class="section container">
                 <div class="row">
                     <div class="c8 off-c2 columns centered-hor">
-                         <h3>According to the definition...</h3>
+                         <h4>According to the definition...</h4>
+                         <!-- Need to think of a better way to disply that, since this get's fucked on mobile view -->
                             <pre><code class="smallmargin largecode">"... A proxy, in its most general form, is a class 
 functioning as an interface to something else. 
 The proxy could interface to anything:..." 
                                             -- <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank">Wikipedia</a>  -- 
 </code></pre>
-                        <h3>
+                        <h4>
                             And so we povide the interface to fun!
-                        </h3>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -49,8 +50,30 @@ The proxy could interface to anything:..."
                     </h1>
                 </div>
                 <div class="row top-margin">
-                    <div class="c5 off-c1 columns">
+                    <div class="c5 columns">
+                        <h5>Proxy started in May 2015. A board of 7 members were selected from the intersted students.</h5>
+                    </div>
+                    <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
+                    <div class="c5 off-c2 columns centered-hor">
+                        <img id="board" src="./assets/board.jpg" style="max-width: 100%; min-height:100%; width: 100%" />
+                    </div>
+                </div>
+                
+                <div class="row top-margin-lg">
+                    <div class="c5 columns centered-hor">
+                        <img src="./assets/fun.jpg" style="max-width: 100%; max-height: 100%; min-height:100%; width: 100%" />
+                    </div>
+                    <div class="c5 off-c2 columns">
                        
+                       <h5>Proxy was created, to become an association bringing students together and organizing educational and fun events.</h5>
+                    </div>
+                </div>
+                <div class="row top-margin-lg">
+                    <div class="c5 columns">
+                       <h5>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h5>
+                    </div>
+                    <div class="c5 off-c2  columns centered-hor">
+                        <img src="./assets/jessica-alba.jpg" style="max-width: 100%; max-height: 100%; min-height:100%; width:100%" />
                     </div>
                 </div>
             </div>
@@ -58,6 +81,16 @@ The proxy could interface to anything:..."
         <!-- END OF STORY -->
 
         <!-- STORY -->
+        <!-- STORY -->
+        <section id="activities" >
+            <div class="container section">
+                <div class="row centered-hor ">
+                    <h2 class="section-head">
+                        Let's keep up the good spirit!
+                    </h2>
+                </div>
+            </div>
+        </section>
         <!-- END OF STORY -->
 
         <!-- FOOTER -->
@@ -68,7 +101,7 @@ The proxy could interface to anything:..."
 <script>
     import Nav from './Navigation.vue'
     import Footer from './Footer.vue'
-    // import {$, jQuery} from 'jquery';
+    import jQuery from 'jquery';
 
     export default {
         data() {
@@ -77,11 +110,20 @@ The proxy could interface to anything:..."
           }
         },
         methods: {
-
+            grow: function(id){
+                //console.log("hey");
+                // TODO: do grow
+            },
+            shrink: function(id){
+                // TODO: do shrink
+            },
         },
         created() {
+
             // will set the header to 1/2nd
             function adjustHeader(){
+                // TODO: set the background picture for the header
+            
                 let wh = document.body.clientHeight;
                 console.log(wh);
                 let welcome = document.getElementById('welcome');
@@ -93,6 +135,9 @@ The proxy could interface to anything:..."
                 adjustHeader();
             });
             window.onresize = adjustHeader;
+
+            // window.location.reload(true);                
+
             // document.getElementById("welcome").style.height = wh +'px';
             // $('#welcome').height(wh);
         },

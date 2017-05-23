@@ -12,9 +12,9 @@
                     <transition-group name="agenda-list">
                         <div class="agenda-item" v-for="ev in events" :key="ev.start_time" :id="ev.start_time">
                             <!--<h6>2017-03-28 : 16:00:00 - 20:00:00</h6>-->
-                            <h6 v-bind:class="checkupcomingevent(ev)">{{geteventtime(ev)}}</h6>
+                            <h6 v-bind:class="checkupcomingeventdate(ev)">{{geteventtime(ev)}}</h6>
                             <!--name-->
-                            <h5>{{ev.name}}</h5>
+                            <h5 v-bind:class="checkupcomingeventname(ev)">{{ev.name}}</h5>
                             <!--description-->
                             <p>{{ev.description.substring(0,100)}}...
                                 <br/>
@@ -61,6 +61,7 @@
     import Axios from 'axios';
     // yes, this is weird, but if we want to use $ to reference jquery as we usually do, the webpack starts to complain
     import jQuery from 'jquery';
+    import moment from 'moment';
 
     export default {
         data() {
@@ -121,8 +122,8 @@
                 // this custom method prepares the correct representation of the date
                 // a really shitty way it is
                 geteventtime: function(event) {
-                    let ds = new Date(event.start_time);
-                    let de = new Date(event.end_time);
+                    let ds = new moment(event.start_time);
+                    let de = new moment(event.end_time);
 
                     function addZero(i) {
                         if (i < 10) {
@@ -143,21 +144,29 @@
                     //     addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
                     //     addZero(de.getHours()) + ':' + addZero(de.getMinutes());
                     
-                    let datestring = ds.getDate() + ' ' + monthName(ds.getMonth()) + ': ' +
-                        addZero(ds.getHours()) + ':' + addZero(ds.getMinutes()) + ' - ' +
-                        addZero(de.getHours()) + ':' + addZero(de.getMinutes());
+                    let datestring = ds.date() + ' ' + monthName(ds.month()) + ': ' +
+                        addZero(ds.hours()) + ':' + addZero(ds.minutes()) + ' - ' +
+                        addZero(de.hours()) + ':' + addZero(de.minutes());
 
                     return datestring;
                 },
                 // this method is used to check whether the event is yet to come or has already taken place
-                checkupcomingevent: function(event) {
-                    let ds = new Date(event.start_time);
-                    if (ds >= Date.now()) {
-                        return "highlight-txt";
+                checkupcomingeventname: function(event) {
+                    let ds = moment(event.start_time);
+                    if (ds >= moment.now()) {
+                        return "bigger-txt";
                     } else {
                         return "pale-txt";
                     }
                 },
+                checkupcomingeventdate: function(event) {
+                    let ds = moment(event.start_time);
+                    if (ds >= Date.now()) {
+                        return "bigger-txt highlight-txt";
+                    } else {
+                        return "pale-txt";
+                    }
+                }
 
         },
 
