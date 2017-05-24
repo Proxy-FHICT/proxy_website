@@ -50,18 +50,19 @@ The proxy could interface to anything:..."
                     </h1>
                 </div>
                 <div class="row top-margin">
+                <!-- TODO: Make a separate css class - it's totally fucked up to have these pictures have inline css... -->
                     <div class="c5 columns">
                         <h5>Proxy started in May 2015. A board of 7 members were selected from the intersted students.</h5>
                     </div>
                     <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
                     <div class="c5 off-c2 columns centered-hor">
-                        <img id="board" src="./assets/board.jpg" style="max-width: 100%; min-height:100%; width: 100%" />
+                        <img id="board" src="./assets/board.jpg" class="picture" />
                     </div>
                 </div>
                 
                 <div class="row top-margin-lg">
                     <div class="c5 columns centered-hor">
-                        <img src="./assets/fun.jpg" style="max-width: 100%; max-height: 100%; min-height:100%; width: 100%" />
+                        <img src="./assets/fun.jpg" class="picture" />
                     </div>
                     <div class="c5 off-c2 columns">
                        
@@ -73,7 +74,7 @@ The proxy could interface to anything:..."
                        <h5>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h5>
                     </div>
                     <div class="c5 off-c2  columns centered-hor">
-                        <img src="./assets/jessica-alba.jpg" style="max-width: 100%; max-height: 100%; min-height:100%; width:100%" />
+                        <img src="./assets/jessica-alba.jpg" class="picture" />
                     </div>
                 </div>
             </div>
@@ -165,5 +166,12 @@ header{
 
 .section{
     padding-top: 5em;
+}
+
+.picture{
+    display: block; 
+    max-width: 100%;  
+    height: auto; 
+    width: 100%
 }
 </style>
