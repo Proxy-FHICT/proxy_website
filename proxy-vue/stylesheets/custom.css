@@ -70,6 +70,10 @@ h1.superfont {
     margin-bottom: 0;
 }
 
+.mediummargin {
+    margin: 3em 0px 3em;
+}
+
 
 /* these two should go together */
 
@@ -111,6 +115,10 @@ header {
 
 .white-txt {
     color: white;
+}
+
+.accent-txt {
+    color: orange;
 }
 
 .highlight-txt {
