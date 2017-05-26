@@ -43,7 +43,7 @@
         <!-- END OF DEFINITION -->
 
         <!-- STORY -->
-        <section id="story" >
+        <section id="activities" >
             <div class="container section">
                 <div class="row">
                     <h1 class="centered-hor section-head">
@@ -52,35 +52,18 @@
                 </div>
                 <div class="row top-margin">
                 <!-- TODO: Make a separate css class - it's totally fucked up to have these pictures have inline css... -->
-                    <!--<div class="c5 columns">
-                        <h5>Proxy started in May 2015.</h5> 
-                        <p>A board of 7 members were selected from the intersted students.</p>
-                        <p>Proxy was created, to become an association bringing students together and organizing educational and fun events.</p>
-                    </div>
-                    <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
-                    <!--<div class="c5 off-c2 columns centered-hor">
-                        <img id="board" src="./assets/board.jpg" class="picture" />
-                    </div>-->
                     <div class="c5 columns">
-                        <h5>Proxy started in May 2015.</h5> 
-                        <p>A board of <span class="highlight-txt">7</span> members were selected from the intersted students.</p>
-                        <img id="board" src="./assets/board.jpg" class="picture" />
-                        <p>Proxy was created, to become an association bringing students together and organizing educational and <span class="highlight-txt">fun</span> events.</p>
-                        <h5>We organized more than 60 events</h5>
-                        <p>There have been huge <span class="highlight-txt">parties</span>, cozy and fun <span class="accent-txt">celebrations</span> and movie nights, <span class="accent-txt">sport</span> tournaments, workshops and <span class="accent-txt">hackathons</span></p>
-                        <p>And we are definitely making much more!</p>
+                        <h5>Proxy started in May 2015. A board of 7 members were selected from the intersted students.</h5>
                     </div>
                     <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
-                    <div class="c5 off-c2 columns">
-                        <img src="./assets/fun.jpg" class="picture" />
-                        <h5 style="">Not everyone knows,</h5> 
-                       <p>but we had a poster of <span class="accent-txt">Jessica Alba</span> hidden for 2 years on a poster wall :D</p>
-                        <img src="./assets/jessica-alba.jpg" class="picture" />
+                    <div class="c5 off-c2 columns centered-hor">
+                        <img id="board" src="./assets/board.jpg" class="picture" />
                     </div>
                 </div>
                 
-                <!--<div class="row top-margin-lg">
+                <div class="row top-margin-lg">
                     <div class="c5 columns centered-hor">
+                        <img src="./assets/fun.jpg" class="picture" />
                     </div>
                     <div class="c5 off-c2 columns">
                        
@@ -89,26 +72,12 @@
                 </div>
                 <div class="row top-margin-lg">
                     <div class="c5 columns">
-                        <img src="./assets/fun.jpg" class="picture" />
-                        <h5>We organized more than 60</h5>
-                        amazing events and we are planning to do more!</h5>
-                        <p>Huge parties, cozy and fun celebrations and movie nights, sport tournaments, workshops and hackathons - we make them all happen and are always open to new suggestions</p>
-                        <p>Keep you eye on the agenda ;)</p>
-                    </div>
-                    <div class="c5 off-c2  columns">
-                       <h5>Not everyone knows,</h5> 
-                       <p>but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</p>
-                        <img src="./assets/jessica-alba.jpg" class="picture" />
-                    </div>
-                </div>-->
-                <!--<div class="row top-margin-lg">
-                    <div class="c5 columns">
                        <h5>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h5>
                     </div>
                     <div class="c5 off-c2  columns centered-hor">
                         <img src="./assets/jessica-alba.jpg" class="picture" />
                     </div>
-                </div>-->
+                </div>
             </div>
         </section>
         <!-- END OF STORY -->
@@ -204,7 +173,6 @@ header{
     max-width: 100%;  
     height: auto; 
     width: 100%;
-    margin-bottom: 1.5em;
 }
 
 .codequote{
