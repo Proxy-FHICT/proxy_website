@@ -21,25 +21,9 @@
         <!-- END OF WELCOME -->
 
         <!-- DEFINITION -->
-        <section>
-            <div class="section container firstsection">
-                <div class="row">
-                    <div class="c8 off-c2 columns centered-hor">
-                         <h4>According to the definition...</h4>
-                         <!-- Need to think of a better way to disply that, since this get's fucked on mobile view -->
-                        <div class="mediummargin largecode codequote">
-"... A proxy, in its most general form, is a class 
-<br/>functioning as an interface to something else. 
-<br/>The proxy could interface to anything:..." 
-     <br/>           -- <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank">Wikipedia</a>  --  
-                        </div>
-                        <h4>
-                            And so we povide the interface to fun!
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+        <app-quote></app-quote>
+
         <!-- END OF DEFINITION -->
 
         <!-- STORY -->
@@ -82,6 +66,38 @@
         </section>
         <!-- END OF STORY -->
 
+        <!-- STRUCTURE -->
+        <section id="prefooter" >
+            <div class="container section">
+                <div class="row centered-hor ">
+                    <h2 class="section-head">
+                        Our Structure
+                    </h2>
+                </div>
+                <!-- department section -->
+                <div class="container">
+                    <div class="row">
+                        <div class="c8 columns off-c2 container">
+                            <div @click="">
+                            <h4>PROXY / President <i class="fa fa-chevron-down" 
+                                style="float: right; color: grey;" aria-hidden="true"></i></h4>  
+                            </div>
+                            <div class="row top-margin" id="department-expansion">
+                                <div class="c5 columns">
+                                    Ahdaksjdhaksd
+                                </div>
+                                <div class="c6 off-c1 columns">
+                                    Fafafa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END OF STRUCTURE -->
+
+
         <!-- PREFOOTER -->
         <section id="prefooter" >
             <div class="container section">
@@ -103,6 +119,7 @@
     import Nav from './Navigation.vue'
     import Footer from './Footer.vue'
     import jQuery from 'jquery';
+    import Quote from './ProxyQuote.vue';
 
     export default {
         data() {
@@ -118,6 +135,9 @@
             shrink: function(id){
                 // TODO: do shrink
             },
+            toogleDepartmentExpansion: function(){
+
+            }
         },
         created() {
 
@@ -128,7 +148,10 @@
                 let wh = document.body.clientHeight;
                 console.log(wh);
                 let welcome = document.getElementById('welcome');
-                welcome.style.height = Math.floor(wh/2) +'px';
+                // 1/2 of the screen size
+                // welcome.style.height = Math.floor(wh/2) +'px';
+                // fullscreen
+                welcome.style.height = Math.floor(wh) +'px';
                 console.log("resized");
             }
 
@@ -145,6 +168,7 @@
         components: {
             'app-nav': Nav,
             'app-footer': Footer,
+            'app-quote': Quote,
         }
     }
 
@@ -154,7 +178,7 @@
 
 <style scoped>
 header{
-    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.45)), url(https://proxy-ict-api.herokuapp.com/img/random);
+    background: linear-gradient( rgba(255, 125, 125, 0.6), rgba(75, 75, 75, 0.6), rgba(0, 0, 0, 0.6)), url(https://proxy-ict-api.herokuapp.com/img/random);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -163,11 +187,11 @@ header{
 .largecode{
     font-size: 1.5rem;
 }
-
-.section{
+/*
+ .section{
     padding-top: 5em;
-}
-
+ }
+*/
 .picture{
     display: block; 
     max-width: 100%;  

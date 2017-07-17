@@ -7,19 +7,23 @@
                     <h1 class="">
                         Contacts
                     </h1>
+                    <!--
                     <div class="c6 columns off-c3">
                         <br/>
                         <p>We are always happy to see you, answer all the questions and offer all the help <span class="pale-txt">(and cookies)</span> we can</p>
                     </div>
+                    -->
                 </div>
-                <div class="row">
-                    <div id="locations-img" class="c5 columns centered-hor">
-                        <!-- Done! needs replacement to the floor plan of fontys -->
-                        
-                            <img src="./assets/floorplan.svg" style="max-width: 100%; max-height: 100%; min-height:100%" />
-                        
+                <div class="row top-margin-lg">
+                    <div id="floorplan-column">
+                        <div id="locations-img" class="c6 columns centered-hor">
+                            <!-- Done! needs replacement to the floor plan of fontys -->
+                            
+                                <img src="./assets/floorplan_med.png" style="max-width: 100%; max-height: 100%; min-width:100%" />
+                            
+                        </div>
                     </div>
-                    <div id="locations-txt" class="c5 columns off-c2 centered-hor">
+                    <div id="locations-txt" class="c5 columns off-c1 centered-hor">
                         <!-- would be awesome to make it centered -->
                         <h5><b>Proxy Room</b></h5>
                         <p>2.60<br/>Second Floor<br/>Fontys R1<br/><br/></p>
@@ -58,6 +62,8 @@ export default {
                 let imagecolumn = document.getElementById("locations-img");
                 imagecolumn.style.height = textheight +'px';
                 console.log("resized columns");
+                // set image to center
+
             };
             document.addEventListener("DOMContentLoaded", function(event) {
                 adjustColumns();

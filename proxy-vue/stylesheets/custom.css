@@ -8,6 +8,7 @@ body {
 
 .superfont {
     font-family: 'Josefin Slab', serif;
+    font-weight: 300;
 }
 
 h1.superfont {
@@ -35,10 +36,27 @@ h1.superfont {
     text-align: center;
 }
 
+.margin-centered {
+    margin: auto;
+}
+
 
 /* add the media query to make the size between the sections smaller on mobile phones */
 
 .section {
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+.section.no-bottom-padding {
+    padding-bottom: 0em;
+}
+
+.section.no-top-padding {
+    padding-top: 0em;
+}
+
+.section.double-top-padding {
     padding-top: 10em;
 }
 
@@ -93,7 +111,7 @@ h1.superfont {
 div.header,
 header {
     height: 100%;
-    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.45)), url(https://proxy-ict-api.herokuapp.com/img/welcome) no-repeat center center fixed;
+    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.8)), url(https://proxy-ict-api.herokuapp.com/img/welcome) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -107,6 +125,14 @@ header {
     header {
         background-attachment: local;
     }
+}
+
+
+/* Image Formatting
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.img-circle {
+    border-radius: 50%;
 }
 
 

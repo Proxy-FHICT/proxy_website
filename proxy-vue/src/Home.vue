@@ -28,7 +28,7 @@
         <!-- QUOTE -->
         <!-- issue 3, assigned: Dmitrii -->
         <section id="we-are">
-            <div id="homequote" class="container section">
+            <div id="homequote" class="container section double-top-padding">
                 <div class="row">
                     <div class="c12 columns">
                         <!-- not sure abou the code styling to be used here in the end -->
@@ -36,10 +36,18 @@
                         We are proxy, the student association for the ICT English stream
                         Our job is to connect students to each other and companies    
                         </code></pre>-->
-                        <h4 class="centered-hor">
-                            We are proxy, the student association for the ICT English stream
-                            <br/> Our job is to connect students to each other and companies
-                        </h4>
+                        <div class="row">
+                            <h1 class="centered-hor section-head">
+                                Hello, we are PROXY!
+                            </h1>
+                            <img src="./assets/proxy-interface.svg" 
+                                style="height: 160px" class="value-img" />
+                        </div>
+                        <div class="row top-margin centered-hor">
+                                <!-- Rewise the text... -->
+                                <h5>We are the student association for the ICT English stream</h5>
+                                <h6/>Our job is to connect students to each other and companies</h6>
+                        </div>
                     </div>
                 </div>
                
