@@ -23,9 +23,11 @@ body {
     }
 }
 
-.centered-text {
-    vertical-align: middle;
-    transform: translateY(50%);
+@media(min-width:780px) {
+    .centered-text {
+        vertical-align: middle;
+        transform: translateY(50%);
+    }
 }
 
 .value-img {

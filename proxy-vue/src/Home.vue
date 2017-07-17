@@ -37,11 +37,13 @@
                         Our job is to connect students to each other and companies    
                         </code></pre>-->
                         <div class="row">
-                            <h1 class="centered-hor section-head">
-                                Hello, we are PROXY!
-                            </h1>
-                            <img src="./assets/proxy-interface.svg" 
-                                style="height: 160px" class="value-img" />
+                            <div class="c12 columns">
+                                <h1 class="centered-hor section-head">
+                                    Hello, we are PROXY!
+                                </h1>
+                                <img src="./assets/proxy-interface.svg" 
+                                    style="height: 160px; max-width: 100%;" class="value-img" />
+                            </div>
                         </div>
                         <div class="row top-margin centered-hor">
                                 <!-- Rewise the text... -->

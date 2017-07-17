@@ -7,7 +7,7 @@
                     <h1 class="section-head">
                         Contacts
                     </h1>
-                    <img src="./assets/floorplan_med_lng.png" class="value-img" style="max-width: 100%; max-height: 100%; height:100%" />
+                    <img src="./assets/floorplan_med_lng.png" class="value-img" style="max-width: 100%; max-height: 100%; width: 100%" />
                 </div>
                <!-- 
                 <div class="row">
@@ -20,20 +20,20 @@
                     </div>
                 </div>
                -->
-                <div class="row top-margin">
-                    <div id="locations-txt" class="c4 columns centered-hor">
+                <div class="row ">
+                    <div id="locations-txt" class="c4 columns centered-hor top-margin">
                         <h5>Address</h5>
                         <!--Latitude:51.452371°
                             Longitude:5.481289°-->
                         <h6>Rachelsmolen 1<br/>5612 MA Eindhoven<br/>Noord-Brabant</h6>
                     </div> 
-                    <div id="locations-txt" class="c4 columns centered-hor">
+                    <div id="locations-txt" class="c4 columns centered-hor top-margin">
                         <!-- would be awesome to make it centered -->
                         <h5>Proxy Room</h5>
-                        <h6>2.60<br/>Second Floor<br/>Fontys R1<br/><br/></h6>
+                        <h6>2.60<br/>Second Floor<br/>Fontys R1</h6>
                         <!-- need to preserve double line space -->
                     </div>       
-                    <div id="locations-txt" class="c4 columns centered-hor">
+                    <div id="locations-txt" class="c4 columns centered-hor top-margin">
                         <h5>Reach Us</h5>
                         <h6>
                         <i class="fa fa-compass" aria-hidden="true"></i> &#160&#160<a href="https://www.google.com/maps?q=Fontys%20-%20Campus%20Rachelsmolen" target="_blank">51.452371; 5.481289</a>
