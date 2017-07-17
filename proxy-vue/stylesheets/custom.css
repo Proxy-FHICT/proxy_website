@@ -11,8 +11,21 @@ body {
     font-weight: 300;
 }
 
-h1.superfont {
-    font-size: 6.5em;
+@media(min-width: 760px) {
+    h1.superfont {
+        font-size: 6.5em;
+    }
+}
+
+@media(max-width:760px) {
+    h1.superfont {
+        font-size: 4.5em;
+    }
+}
+
+.centered-text {
+    vertical-align: middle;
+    transform: translateY(50%);
 }
 
 .value-img {
@@ -48,6 +61,15 @@ h1.superfont {
     padding-bottom: 5em;
 }
 
+.section.smallpadding {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
+
+.section.firstsection {
+    padding-top: 7.5em;
+}
+
 .section.no-bottom-padding {
     padding-bottom: 0em;
 }
@@ -78,6 +100,10 @@ h1.superfont {
 
 .top-margin {
     margin-top: 2.5em;
+}
+
+.top-margin-sm {
+    margin-top: 1.5em;
 }
 
 .top-margin-lg {
@@ -166,6 +192,14 @@ h6.bigger-txt {
 
 h5.bigger-txt {
     font-size: 2em;
+}
+
+
+/* Quote background colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.quote-bg {
+    background: #f5f5f5;
 }
 
 

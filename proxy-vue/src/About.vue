@@ -27,7 +27,7 @@
         <!-- END OF DEFINITION -->
 
         <!-- STORY -->
-        <section id="activities" >
+        <section id="story" >
             <div class="container section">
                 <div class="row">
                     <h1 class="centered-hor section-head">
@@ -36,8 +36,9 @@
                 </div>
                 <div class="row top-margin">
                 <!-- TODO: Make a separate css class - it's totally fucked up to have these pictures have inline css... -->
-                    <div class="c5 columns">
-                        <h5>Proxy started in May 2015. A board of 7 members were selected from the intersted students.</h5>
+                    <div class="c5 columns centered-hor centered-text">
+                        <h5>How did it all begin?</h5>
+                        <h6>Proxy started in May 2015. A board of 7 members were selected from the intersted students.</h6>
                     </div>
                     <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
                     <div class="c5 off-c2 columns centered-hor">
@@ -49,14 +50,15 @@
                     <div class="c5 columns centered-hor">
                         <img src="./assets/fun.jpg" class="picture" />
                     </div>
-                    <div class="c5 off-c2 columns">
-                       
-                       <h5>Proxy was created, to become an association bringing students together and organizing educational and fun events.</h5>
+                    <div class="c5 off-c2 columns centered-hor centered-text">
+                       <h5>What for?</h5>
+                       <h6>Proxy was created, to become an association bringing students together and organizing educational and fun events.</h6>
                     </div>
                 </div>
                 <div class="row top-margin-lg">
-                    <div class="c5 columns">
-                       <h5>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h5>
+                    <div class="c5 columns centered-hor centered-text">
+                        <h5>What are we proud of?</h5>
+                        <h6>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h6>
                     </div>
                     <div class="c5 off-c2  columns centered-hor">
                         <img src="./assets/jessica-alba.jpg" class="picture" />
@@ -67,6 +69,7 @@
         <!-- END OF STORY -->
 
         <!-- STRUCTURE -->
+        <!-- deprecated, already too long of a page
         <section id="prefooter" >
             <div class="container section">
                 <div class="row centered-hor ">
@@ -75,6 +78,7 @@
                     </h2>
                 </div>
                 <!-- department section -->
+                <!--
                 <div class="container">
                     <div class="row">
                         <div class="c8 columns off-c2 container">
@@ -95,10 +99,12 @@
                 </div>
             </div>
         </section>
+        -->
         <!-- END OF STRUCTURE -->
 
 
         <!-- PREFOOTER -->
+        <!-- deprecated, looks ugly
         <section id="prefooter" >
             <div class="container section">
                 <div class="row centered-hor ">
@@ -108,6 +114,7 @@
                 </div>
             </div>
         </section>
+        -->
         <!-- END OF PREFOOTER -->
 
         <!-- FOOTER -->
@@ -124,7 +131,16 @@
     export default {
         data() {
           return {
-              anchors: []
+              anchors: [
+                    {
+                      name: "SIMPLY",
+                      url:"#simply"
+                    },
+                    {
+                      name: "STORY",
+                      url:"#story"
+                    }
+              ]
           }
         },
         methods: {
