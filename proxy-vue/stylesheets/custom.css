@@ -8,10 +8,26 @@ body {
 
 .superfont {
     font-family: 'Josefin Slab', serif;
+    font-weight: 300;
 }
 
-h1.superfont {
-    font-size: 6.5em;
+@media(min-width: 760px) {
+    h1.superfont {
+        font-size: 6.5em;
+    }
+}
+
+@media(max-width:760px) {
+    h1.superfont {
+        font-size: 4.5em;
+    }
+}
+
+@media(min-width:780px) {
+    .centered-text {
+        vertical-align: middle;
+        transform: translateY(50%);
+    }
 }
 
 .value-img {
@@ -35,10 +51,36 @@ h1.superfont {
     text-align: center;
 }
 
+.margin-centered {
+    margin: auto;
+}
+
 
 /* add the media query to make the size between the sections smaller on mobile phones */
 
 .section {
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+.section.smallpadding {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
+
+.section.firstsection {
+    padding-top: 7.5em;
+}
+
+.section.no-bottom-padding {
+    padding-bottom: 0em;
+}
+
+.section.no-top-padding {
+    padding-top: 0em;
+}
+
+.section.double-top-padding {
     padding-top: 10em;
 }
 
@@ -62,12 +104,20 @@ h1.superfont {
     margin-top: 2.5em;
 }
 
+.top-margin-sm {
+    margin-top: 1.5em;
+}
+
 .top-margin-lg {
     margin-top: 4em;
 }
 
 .no-bottom-margin {
     margin-bottom: 0;
+}
+
+.mediummargin {
+    margin: 3em 0px 3em;
 }
 
 
@@ -89,7 +139,7 @@ h1.superfont {
 div.header,
 header {
     height: 100%;
-    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.45)), url(https://proxy-ict-api.herokuapp.com/img/welcome) no-repeat center center fixed;
+    background: linear-gradient( rgba(255, 125, 125, 0.45), rgba(75, 75, 75, 0.45), rgba(0, 0, 0, 0.8)), url(https://proxy-ict-api.herokuapp.com/img/welcome) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -106,11 +156,23 @@ header {
 }
 
 
+/* Image Formatting
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.img-circle {
+    border-radius: 50%;
+}
+
+
 /* Text colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .white-txt {
     color: white;
+}
+
+.accent-txt {
+    color: orange;
 }
 
 .highlight-txt {
@@ -132,6 +194,14 @@ h6.bigger-txt {
 
 h5.bigger-txt {
     font-size: 2em;
+}
+
+
+/* Quote background colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.quote-bg {
+    background: #f5f5f5;
 }
 
 

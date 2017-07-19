@@ -57,13 +57,13 @@
 
     .navigation a.menu-btn:hover,
     .navigation a.menu-title:hover {
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
     }
 
     .navigation a.menu-btn,
     .navigation a.menu-title {
-    color: rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.4);
     text-decoration: none;
     }
 

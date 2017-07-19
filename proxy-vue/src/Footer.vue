@@ -1,5 +1,5 @@
 <template>
-        <div class="container section no-bottom-margin">
+        <div class="container section no-bottom-margin no-bottom-padding">
             <div class="row">
                 <div class="c8 off-c2 columns centered-hor">
                     <i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
