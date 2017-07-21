@@ -5,8 +5,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
-import About from './About.vue';
-import Home from './Home.vue';
+import About from './_about/About.vue';
+import Home from './_home/Home.vue';
 
 Vue.use(VueRouter);
 

@@ -42,13 +42,13 @@
                     </div>
                     <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
                     <div class="c5 off-c2 columns centered-hor">
-                        <img id="board" src="./assets/board.jpg" class="picture" />
+                        <img id="board" src="../assets/board.jpg" class="picture" />
                     </div>
                 </div>
                 
                 <div class="row top-margin-lg">
                     <div class="c5 columns centered-hor">
-                        <img src="./assets/fun.jpg" class="picture" />
+                        <img src="../assets/fun.jpg" class="picture" />
                     </div>
                     <div class="c5 off-c2 columns centered-hor centered-text">
                        <h5>What for?</h5>
@@ -61,7 +61,7 @@
                         <h6>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h6>
                     </div>
                     <div class="c5 off-c2  columns centered-hor">
-                        <img src="./assets/jessica-alba.jpg" class="picture" />
+                        <img src="../assets/jessica-alba.jpg" class="picture" />
                     </div>
                 </div>
             </div>
@@ -123,8 +123,8 @@
 </template>
 
 <script>
-    import Nav from './Navigation.vue'
-    import Footer from './Footer.vue'
+    import Nav from '../_shared/Navigation.vue'
+    import Footer from '../_shared/Footer.vue'
     import jQuery from 'jquery';
     import Quote from './ProxyQuote.vue';
 

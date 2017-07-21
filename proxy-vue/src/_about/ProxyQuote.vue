@@ -17,7 +17,7 @@
             <div class="section container ">
                 <div class="row">
                     <div class="c12 columns">
-                        <img src="./assets/proxy-uml-03.png" 
+                        <img src="../assets/proxy-uml-03.png" 
                                     style="max-height: 300px; max-width: 100%;" 
                                     class="value-img margin-centered" />
                     </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="row top-margin">
                     <div class="c12 columns">
-                        <img src="./assets/proxy-uml-04.png" 
+                        <img src="../assets/proxy-uml-04.png" 
                                     style="max-height: 350px; max-width: 100%;" 
                                     class="value-img" />
                     </div>
@@ -44,7 +44,7 @@
                 <div class="row top-margin-sm">
                     <div class="c2 off-c1 columns">
                         <!-- make a css class for such icons? -->
-                        <img src="./assets/erich-gamma.jpg"
+                        <img src="../assets/erich-gamma.jpg"
                             style="max-width: 140px; width:120px; height:120px"
                             class="value-img img-circle">
                     </div>
