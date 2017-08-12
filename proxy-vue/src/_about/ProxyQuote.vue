@@ -30,11 +30,15 @@
             <div id="simply" class="section container">
                 <div class="row">
                     <div class="c12 columns centered-hor">
-                        <h1>Simply put</h1>
+                        <h1 class="centered-hor section-head">Simply put</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="c12 columns centered-hor">
                         <h5>PROXY makes the university fun again!</h5>
                     </div>
                 </div>
-                <div class="row top-margin">
+                <div class="row top-margin-sm">
                     <div class="c12 columns">
                         <img src="../assets/proxy-uml-04.png" 
                                     style="max-height: 350px; max-width: 100%;" 

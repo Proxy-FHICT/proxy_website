@@ -5,8 +5,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
-import About from './_about/About.vue';
 import Home from './_home/Home.vue';
+import About from './_about/About.vue';
+import Team from './_team/Team.vue'
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,9 @@ const routes = [{
 }, {
     path: '/about',
     component: About,
+}, {
+    path: '/team',
+    component: Team,
 }]
 
 const router = new VueRouter({

@@ -2,7 +2,7 @@
 <template>
     <!-- issue 1 -->
     <!-- THIS REALLY REQUIRES A SEPARATE VUE COMPONENT! -->
-    <div>
+    <div id="outer-nav">
         <div class="navigation" v-if="!(menuactive)">
             <h5>
                 <a class="menu-btn" v-on:click="showmenu">
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <h5>
-                        <a class="menu-title" href="#"  @click="closemenu"><b>PROXY</b></a>
+                        <a class="menu-title" href="#"  @click="closemenu"><b>PROXY{{header.toLowerCase()}}</b></a>
                     </h5>
                 </div>
                 <div class="links level" v-if="anchors.length>0">
@@ -150,7 +150,7 @@
 <script>
 
 export default {
-        props: ['sublinks'],
+        props: ['sublinks', 'title'],
         data() {
           return {
               menuactive: false,
@@ -182,13 +182,20 @@ export default {
         computed: {
             anchors() {
                 if(this.sublinks != null){
-                    for(let i=0; i<this.sublinks.length; i++){
-                        console.dir(this.sublinks[i]);
-                    }
+                    // for(let i=0; i<this.sublinks.length; i++){
+                    //     console.dir(this.sublinks[i]);
+                    // }
                     return this.sublinks;
                 }
                 return [];
-            }
+            },
+            header() {
+                if(this.title != null){
+                    return `/${this.title}`;
+                }
+                console.log("tooooo bad")
+                return ""
+            },
         }
 }
 </script>
