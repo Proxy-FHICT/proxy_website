@@ -76,7 +76,7 @@
 <script>
     import Nav from '../_shared/Navigation.vue'
     import Footer from '../_shared/Footer.vue'
-    import jQuery from 'jquery';
+    // import jQuery from 'jquery';
     import Quote from './ProxyQuote.vue';
 
     export default {
@@ -129,8 +129,6 @@
             'app-quote': Quote,
         }
     }
-
-    //https://proxy-ict-api.herokuapp.com/img/random
 </script>
 
 
@@ -140,6 +138,7 @@ header{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .largecode{
