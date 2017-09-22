@@ -7,14 +7,14 @@
                     <h1 class="section-head">
                         Contacts
                     </h1>
-                    <img src="./assets/floorplan_med_lng.png" class="value-img" style="max-width: 100%; max-height: 100%; width: 100%" />
+                    <img src="../assets/floorplan_med_lng.png" class="value-img" style="max-width: 100%; max-height: 100%; width: 100%" />
                 </div>
                <!-- 
                 <div class="row">
                     <div id="floorplan-column">
                         <div id="locations-img" class="c10 off-c1 columns centered-hor">
                             <!-- Done! needs replacement to the floor plan of fontys - ->
-                                <img src="./assets/floorplan_med_lng.png" class="value-img" style="max-width: 100%; max-height: 100%; height:100%" />
+                                <img src="../assets/floorplan_med_lng.png" class="value-img" style="max-width: 100%; max-height: 100%; height:100%" />
                             
                         </div>
                     </div>

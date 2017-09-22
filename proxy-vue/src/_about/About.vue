@@ -2,7 +2,7 @@
     <div>
     
         <!-- NAVBAR -->
-        <app-nav :sublinks="anchors"></app-nav>
+        <app-nav :sublinks="anchors" :title="title"></app-nav>
         <!-- END OF NAVBAR -->
 
         <!-- WELCOME -->
@@ -42,13 +42,13 @@
                     </div>
                     <!--<div class="c5 off-c2 columns centered-hor" @mouseover="grow('#board')" @mouseleave="shrink('#board')">-->
                     <div class="c5 off-c2 columns centered-hor">
-                        <img id="board" src="./assets/board.jpg" class="picture" />
+                        <img id="board" src="../assets/board.jpg" class="picture" />
                     </div>
                 </div>
                 
                 <div class="row top-margin-lg">
                     <div class="c5 columns centered-hor">
-                        <img src="./assets/fun.jpg" class="picture" />
+                        <img src="../assets/fun.jpg" class="picture" />
                     </div>
                     <div class="c5 off-c2 columns centered-hor centered-text">
                        <h5>What for?</h5>
@@ -61,61 +61,12 @@
                         <h6>Not everyone knows, but we had a poster of Jessica Alba hidden for 2 years on a poster wall :D</h6>
                     </div>
                     <div class="c5 off-c2  columns centered-hor">
-                        <img src="./assets/jessica-alba.jpg" class="picture" />
+                        <img src="../assets/jessica-alba.jpg" class="picture" />
                     </div>
                 </div>
             </div>
         </section>
-        <!-- END OF STORY -->
-
-        <!-- STRUCTURE -->
-        <!-- deprecated, already too long of a page
-        <section id="prefooter" >
-            <div class="container section">
-                <div class="row centered-hor ">
-                    <h2 class="section-head">
-                        Our Structure
-                    </h2>
-                </div>
-                <!-- department section -->
-                <!--
-                <div class="container">
-                    <div class="row">
-                        <div class="c8 columns off-c2 container">
-                            <div @click="">
-                            <h4>PROXY / President <i class="fa fa-chevron-down" 
-                                style="float: right; color: grey;" aria-hidden="true"></i></h4>  
-                            </div>
-                            <div class="row top-margin" id="department-expansion">
-                                <div class="c5 columns">
-                                    Ahdaksjdhaksd
-                                </div>
-                                <div class="c6 off-c1 columns">
-                                    Fafafa
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        -->
-        <!-- END OF STRUCTURE -->
-
-
-        <!-- PREFOOTER -->
-        <!-- deprecated, looks ugly
-        <section id="prefooter" >
-            <div class="container section">
-                <div class="row centered-hor ">
-                    <h2 class="section-head">
-                        Let's have fun together!
-                    </h2>
-                </div>
-            </div>
-        </section>
-        -->
-        <!-- END OF PREFOOTER -->
+       
 
         <!-- FOOTER -->
         <app-footer></app-footer>
@@ -123,14 +74,15 @@
 </template>
 
 <script>
-    import Nav from './Navigation.vue'
-    import Footer from './Footer.vue'
-    import jQuery from 'jquery';
+    import Nav from '../_shared/Navigation.vue'
+    import Footer from '../_shared/Footer.vue'
+    // import jQuery from 'jquery';
     import Quote from './ProxyQuote.vue';
 
     export default {
         data() {
           return {
+              title: "ABOUT",
               anchors: [
                     {
                       name: "SIMPLY",
@@ -143,24 +95,11 @@
               ]
           }
         },
-        methods: {
-            grow: function(id){
-                //console.log("hey");
-                // TODO: do grow
-            },
-            shrink: function(id){
-                // TODO: do shrink
-            },
-            toogleDepartmentExpansion: function(){
-
-            }
-        },
         created() {
 
-            // will set the header to 1/2nd
+            // will set the header to full screen
             function adjustHeader(){
-                // TODO: set the background picture for the header
-            
+                
                 let wh = document.body.clientHeight;
                 console.log(wh);
                 let welcome = document.getElementById('welcome');
@@ -171,15 +110,18 @@
                 console.log("resized");
             }
 
+            function setBackground(){
+                let fullscreenimage = document.getElementById('fullscreenimage');
+                fullscreenimage.style.background = 'linear-gradient( rgba(255, 125, 125, 0.6), rgba(75, 75, 75, 0.6), rgba(0, 0, 0, 0.6)), url(https://proxy-ict-api.herokuapp.com/img/random);';
+                console.log("backgroundSet");
+            }
+
             document.addEventListener("DOMContentLoaded", function(event) {
                 adjustHeader();
+                // does not work
+                setBackground();
             });
-            window.onresize = adjustHeader;
-
-            // window.location.reload(true);                
-
-            // document.getElementById("welcome").style.height = wh +'px';
-            // $('#welcome').height(wh);
+            window.onresize = adjustHeader; 
         },
         components: {
             'app-nav': Nav,
@@ -187,8 +129,6 @@
             'app-quote': Quote,
         }
     }
-
-    //https://proxy-ict-api.herokuapp.com/img/random
 </script>
 
 
@@ -198,6 +138,7 @@ header{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .largecode{

@@ -15,7 +15,7 @@
                 <div class="centered-hor centered-ver" style="height:inherit;">
                     <!--content goes here-->
                     <div>
-                        <img src="./assets/proxy.png" style="max-width:100%; max-height:100%;" />
+                        <img src="../assets/proxy.png" style="max-width:100%; max-height:100%;" />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                                 <h1 class="centered-hor section-head">
                                     Hello, we are PROXY!
                                 </h1>
-                                <img src="./assets/proxy-interface.svg" 
+                                <img src="../assets/proxy-interface.svg" 
                                     style="height: 160px; max-width: 100%;" class="value-img" />
                             </div>
                         </div>
@@ -69,22 +69,22 @@
                 <div class="row top-margin">
                     <div class="c3 columns centered-hor">
                         <!-- pictures need to be changed -->
-                        <img src="./assets/lnr-magic-wand.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-magic-wand.svg" style="height: 80px;" class="value-img" />
                         <h5>Party</h5>
                         <h6>Meet other students, share drinks and have fun</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/lnr-pie-chart.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-pie-chart.svg" style="height: 80px;" class="value-img" />
                         <h5>Classes</h5>
                         <h6>Learn more about IT at our workshops and lectures</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/lnr-rocket.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-rocket.svg" style="height: 80px;" class="value-img" />
                         <h5>Competitions</h5>
                         <h6>Join our gaming and sports challenges to WIN BIG</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/lnr-heart.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-heart.svg" style="height: 80px;" class="value-img" />
                         <h5>Support</h5>
                         <h6>We are always ready to help with any troubles</h6>
                     </div>
@@ -117,8 +117,8 @@
 <script>
     import Agenda from './Agenda.vue';
     import Contacts from './Contacts.vue';
-    import Nav from './Navigation.vue';
-    import Footer from './Footer.vue';
+    import Nav from '../_shared/Navigation.vue';
+    import Footer from '../_shared/Footer.vue';
     // import {$, jQuery} from 'jquery';
 
     export default {
