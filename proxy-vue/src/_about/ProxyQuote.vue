@@ -33,11 +33,13 @@
                         <h1 class="centered-hor section-head">Simply put</h1>
                     </div>
                 </div>
+                <!-- Consider comment removed / kept 
                 <div class="row">
                     <div class="c12 columns centered-hor">
                         <h5>PROXY makes the university fun again!</h5>
                     </div>
-                </div>
+                </div> 
+                -->
                 <div class="row top-margin-sm">
                     <div class="c12 columns">
                         <img src="../assets/proxy-uml-04.png" 
