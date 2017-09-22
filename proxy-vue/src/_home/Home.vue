@@ -15,7 +15,7 @@
                 <div class="centered-hor centered-ver" style="height:inherit;">
                     <!--content goes here-->
                     <div>
-                        <img src="./assets/proxy.png" style="max-width:100%; max-height:100%;" />
+                        <img src="../assets/proxy.png" style="max-width:100%; max-height:100%;" />
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <!-- QUOTE -->
         <!-- issue 3, assigned: Dmitrii -->
         <section id="we-are">
-            <div id="homequote" class="container section">
+            <div id="homequote" class="container section double-top-padding">
                 <div class="row">
                     <div class="c12 columns">
                         <!-- not sure abou the code styling to be used here in the end -->
@@ -36,10 +36,20 @@
                         We are proxy, the student association for the ICT English stream
                         Our job is to connect students to each other and companies    
                         </code></pre>-->
-                        <h4 class="centered-hor">
-                            We are proxy, the student association for the ICT English stream
-                            <br/> Our job is to connect students to each other and companies
-                        </h4>
+                        <div class="row">
+                            <div class="c12 columns">
+                                <h1 class="centered-hor section-head">
+                                    Hello, we are PROXY!
+                                </h1>
+                                <img src="../assets/proxy-interface.svg" 
+                                    style="height: 160px; max-width: 100%;" class="value-img" />
+                            </div>
+                        </div>
+                        <div class="row top-margin centered-hor">
+                                <!-- Rewise the text... -->
+                                <h5>We are the student association for the ICT English stream</h5>
+                                <h6/>Our job is to connect students to each other and companies</h6>
+                        </div>
                     </div>
                 </div>
                
@@ -59,22 +69,22 @@
                 <div class="row top-margin">
                     <div class="c3 columns centered-hor">
                         <!-- pictures need to be changed -->
-                        <img src="./assets/lnr-magic-wand.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-magic-wand.svg" style="height: 80px;" class="value-img" />
                         <h5>Party</h5>
                         <h6>Meet other students, share drinks and have fun</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/lnr-pie-chart.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-pie-chart.svg" style="height: 80px;" class="value-img" />
                         <h5>Classes</h5>
                         <h6>Learn more about IT at our workshops and lectures</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/lnr-rocket.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-rocket.svg" style="height: 80px;" class="value-img" />
                         <h5>Competitions</h5>
                         <h6>Join our gaming and sports challenges to WIN BIG</h6>
                     </div>
                     <div class="c3 columns centered-hor">
-                        <img src="./assets/lnr-heart.svg" style="height: 80px;" class="value-img" />
+                        <img src="../assets/lnr-heart.svg" style="height: 80px;" class="value-img" />
                         <h5>Support</h5>
                         <h6>We are always ready to help with any troubles</h6>
                     </div>
@@ -107,8 +117,8 @@
 <script>
     import Agenda from './Agenda.vue';
     import Contacts from './Contacts.vue';
-    import Nav from './Navigation.vue';
-    import Footer from './Footer.vue';
+    import Nav from '../_shared/Navigation.vue';
+    import Footer from '../_shared/Footer.vue';
     // import {$, jQuery} from 'jquery';
 
     export default {
